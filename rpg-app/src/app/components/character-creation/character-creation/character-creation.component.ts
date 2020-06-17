@@ -9,7 +9,39 @@ export class CharacterCreationComponent implements OnInit {
 
   constructor() { }
 
+  character = {
+    race : "--Choose--",
+    class : "--Choose--",
+    gender : undefined,
+    name : undefined
+  }
+
+  characterComplete: boolean = false;
+
   ngOnInit(): void {
   }
+
+  changeRace = () => {
+
+  }
+
+  changeClass = () => {
+    
+  }
+
+  changeName = () => {
+    
+  }
+
+  changeGender = () => {
+    
+  }
+
+  createCharacter = () => {
+    
+  }
+
+
+
 
 }
