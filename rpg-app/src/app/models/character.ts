@@ -69,6 +69,7 @@ export class BaseCharacter {
         }
     }
 
+    spriteUrl : string;
     name : string ;
     maxHealth : number;
     currentHealth : number;
@@ -103,5 +104,22 @@ export class BaseCharacter {
         return Math.floor(Math.random() * (this.equippedWeapon.maxDamage - this.equippedWeapon.minDamage + 1) ) + this.equippedWeapon.minDamage;
     }
 
+
+}
+
+
+export class Monster extends BaseCharacter {
+    isTrapped : boolean = false;
+    poisonStacks : number = 0;
+    isStrongPoison : boolean = false;
+    hasTakenDamageThisTrun : boolean = false;
+
+    constructor( name, health, skills, barriers : {attack: number , sneak: number, persuade: number}, minDamage, maxDamage, spriteUrl){
+        super(name, health, skills);
+
+        this.barriers = barriers;
+        this.equippedWeapon = new Weapon(undefined, minDamage, maxDamage);
+        this.spriteUrl = spriteUrl;
+    }
 
 }
