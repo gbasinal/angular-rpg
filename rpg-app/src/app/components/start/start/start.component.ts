@@ -9,6 +9,8 @@ export class StartComponent implements OnInit {
 
   constructor() { }
 
+  gameTitle="AngularRPG"
+
   ngOnInit(): void {
   }
 

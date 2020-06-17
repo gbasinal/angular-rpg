@@ -1,1 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
+// Functions for px to em conversion
+$browser-context: 18; // Default
+@function em($pixels, $context: $browser-context) {
+    @return #{$pixels/$context}em;
+}
+
+@function px($pixels, $context: $browser-context) {
+    @return #{$pixels/$context};
+}
+
+// Mixins for default styles 
+
+$base : 18;
+$base-height : 22.5;
+
+
+@mixin textStyle( $color , $size: $base, $lspace, $lheight: $base-height , $weight: normal ) {
+    color: $color;
+    font-size: em($size);
+    letter-spacing: #{$lspace/$base}em;
+    line-height:  $lheight/$size;
+    font-weight: $weight;
+}
+
+@mixin bgSettings($size , $repeat , $position ) {
+    background-size: $size;
+    background-repeat: $repeat;
+    background-position: $position;
+}
+
+$grey : #ececec;
+$orange : #fc7233;
+
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: $grey;
+}
+
+.section {
+    padding : em(100) em(15);
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+}
+
+p {
+    font-family: 'Raleway', sans-serif;
+}
+
+.btn {
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: em(5);
+    outline: none;
+    color: black;
+    padding: em(10 25);
+    letter-spacing: 1.2px;
+    font-family: 'Raleway', sans-serif;
+    &--orange-fill {
+        background-color: $orange;
+        color: $grey;
+    }
+    &--orange-border {
+        background-color: transparent;
+        color: $orange;
+        border-color: $orange;
+        &:hover {
+            background-color: $orange;
+            color: white;
+            
+        }
+    }
+}
