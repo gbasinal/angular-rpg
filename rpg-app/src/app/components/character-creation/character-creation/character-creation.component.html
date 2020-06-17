@@ -5,8 +5,8 @@
                 <h1>Character Creation:</h1>
             </div>
             <div class="row h-100">
-                <div class="col-3  sidebar sidebar--races-container p-3 ">
-                    <div class="sidebar-header--wrapper text-center">
+                <div class="col-3  sidebar sidebar--races-container">
+                    <div class="sidebar-header--wrapper">
                         <h2>Races</h2>
                     </div>
                     <ul>
@@ -36,10 +36,10 @@
                         <div class="gender-wrapper">
                             <h3>Gender</h3>
                             <div class="d-flex justify-content-center">
-                                <div class="gender-btn mr-1" [class.active]="character.gender === male" (click)="changeGender('Male')">
+                                <div class="btn--gender mr-1" [class.active]="character.gender === 'Male'" (click)="changeGender('Male')">
                                     <i class="fas fa-mars"></i>
                                 </div>
-                                <div class="gender-btn ml-1" [class.active]="character.gender === female" (click)="changeGender('Female')">
+                                <div class="btn--gender ml-1" [class.active]="character.gender === 'Female'" (click)="changeGender('Female')">
                                     <i class="fas fa-venus"></i>
                                 </div>
         
@@ -58,8 +58,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3 sidebar sidebar--classes-container p-3">
-                    <div class="sidebar-header--wrapper text-center">
+                <div class="col-3 sidebar sidebar--classes-container ">
+                    <div class="sidebar-header--wrapper">
                         <h2>Classes</h2>
                     </div>
                     <ul>

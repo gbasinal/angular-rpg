@@ -20,23 +20,44 @@ $orange : #fc7233;
     padding-top: em(50);
     .character-creation-wrapper {
         .header-container {
-
+            padding-bottom: em(100);
         }
         .sidebar {
+            // padding-left : em(50);
             ul {
                 margin: 0;
                 padding: 0;
                 li {
-                    list-style-type: none;;
+                    list-style-type: none;
+                    cursor: pointer;
+                    &.active {
+                        color: $orange;
+                        font-weight: 700;
+                    }
                 }
             }
+            &--classes-container {
+                text-align: right;
+            }
+
         }
         .character-info-container {
             .race-container {
 
             }
             .gender-container {
-                
+                .btn--gender  {
+                    width: em(25);
+                    height: em(25);
+                    &.active {
+                        background-color : $orange;
+
+                    }
+                    i {
+                        cursor: pointer;
+                    }
+                    
+                }
             }
             .class-container {
                 
