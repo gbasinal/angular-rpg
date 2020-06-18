@@ -1,0 +1,87 @@
+// Functions for px to em conversion
+$browser-context: 18; // Default
+@function em($pixels, $context: $browser-context) {
+    @return #{$pixels/$context}em;
+}
+
+@function px($pixels, $context: $browser-context) {
+    @return #{$pixels/$context};
+}
+
+// Mixins for default styles 
+
+
+$grey : #ececec;
+$orange : #fc7233;
+
+
+
+.character-creation-container {
+    padding-top: em(50);
+    .character-creation-wrapper {
+        .header-container {
+            padding-bottom: em(100);
+        }
+        .sidebar {
+            // padding-left : em(50);
+            ul {
+                margin: 0;
+                padding: 0;
+                li {
+                    list-style-type: none;
+                    cursor: pointer;
+                    &.active {
+                        color: $orange;
+                        font-weight: 700;
+                    }
+                }
+            }
+            &--classes-container {
+                text-align: right;
+            }
+
+        }
+        .character-info-container {
+            .race-container {
+
+            }
+            .gender-container {
+                .btn--gender  {
+                    width: em(25);
+                    height: em(25);
+                    &.active {
+                        background-color : $orange;
+
+                    }
+                    i {
+                        cursor: pointer;
+                    }
+                    
+                }
+            }
+            .class-container {
+                
+            }
+            .name-container {
+                .name-wrapper {
+                    .form-name-wrapper {
+                        display: flex;
+                        flex-direction: column;
+                        width: em(350);
+                        margin: em(25) auto;
+                        input {
+                            border:  1px solid $orange;
+                            padding: em(10) em(5);
+                            background-color: transparent;
+                            border-radius: 5px;
+                        }
+                        button {
+                            border-color: transparent;
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

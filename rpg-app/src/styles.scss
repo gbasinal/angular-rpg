@@ -45,15 +45,24 @@ body {
 }
 
 .section {
-    padding : em(100) em(15);
+    padding : em(10) em(15);
 }
 
-h1 {
+h1, h2, h3, h4 {
     font-family: 'Poppins', sans-serif;
+    color: black;
 }
 
-p {
+p, li , i, input{
     font-family: 'Raleway', sans-serif;
+    color: black;
+}
+
+input {
+    &:focus {
+        outline: none;
+        border-color: rgba(252, 114, 51 , .1);
+    }
 }
 
 .btn {
@@ -62,12 +71,18 @@ p {
     border-radius: em(5);
     outline: none;
     color: black;
-    padding: em(10 25);
+    padding: em(10) em(25);
     letter-spacing: 1.2px;
     font-family: 'Raleway', sans-serif;
     &--orange-fill {
         background-color: $orange;
         color: $grey;
+        &:hover {
+            background-color: transparent;
+            color: $orange;
+            border:1px solid $orange !important;
+            
+        }
     }
     &--orange-border {
         background-color: transparent;
