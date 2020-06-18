@@ -270,6 +270,7 @@ export class Cleric  extends Hero {
 
 }
 
+// this will define the default stats of the race the user will select
 export const checkRace = (hero: Hero) => {
     switch (hero.race) {
         case RaceOptions.human:
