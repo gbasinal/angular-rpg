@@ -52,20 +52,25 @@ export class GameControllerService {
 
     // this will check the method created before in the character file. this method will apply the default bonus stats of the race selected
     checkRace(this.mainCharacter)
-
+    // this will add the main character in the hero party which is initialy set up as empty
     this.heroParty.push(this.mainCharacter);
-
+    // this will move the user to the story page after creating the character. 
     this.router.navigateByUrl("/story");
   }
   
+  // this is a method that will display messages when encounter is a success
   encounterSuccess(): string[] {
     let messages : string[] = [];
+    // since we already created an array for what will happen in the current chapter if the user succeeds, we will be looping the rewards inside the if succeed object and do something in each rewards condition.
     this.currentChapter.ifSucceed.forEach(reward => {
       switch(reward){
+        // successoptions is an enum created in the chapter model
           case SuccessOptions.rewardExperience:
               messages.push(`Each member of your party received ${this.currentChapter.rewards.experience} experience`);
+              // to add the exp points to each member of the party, we will be looping all the heroes then add the exp gain to each heroes.
               this.heroParty.forEach(hero => {
                 hero.experience += this.currentChapter.rewards.experience;
+                // this will check if the gained exp surpasses the current exp required in the hero's current level 
                 if(hero.experience >= ExperienceTolevel[hero.level]) {
                   messages.push(`${hero.name} leveled up! Upgrade their stats on the inventory sreen.`)
                   hero.levelUp();
@@ -75,11 +80,13 @@ export class GameControllerService {
           case SuccessOptions.rewardEquipment:
               messages.push("You received the following equipments: ");
               this.currentChapter.rewards.equipment.forEach(equipment => {
+                // this will check if the equipment gained is an armor or a weapon.
                 if(equipment instanceof Armor) {
                   messages.push(`${equipment.name} -- Defense Points: ${equipment.defensePts}`)
                 }else {
                   messages.push(`${equipment.name} -- Min Damage: ${equipment.minDamage}, Max Damage: ${equipment.maxDamage}`)
                 }
+                // this will store the gained equipment to the party inventory
                 this.partyInventory.push(equipment);
               });
               break;
@@ -97,9 +104,12 @@ export class GameControllerService {
     })
     return messages;
   }
+
+  // this method will get you to the next chapter then calling the rest method to reset the hp values
   nextChapter(): void {
     this.heroParty.forEach(hero => hero.rest());
     this.currentChapter = this.currentChapter.nextChapter;
+    // this resets the current number of enemy party
     this.enemyParty = this.currentChapter.enemyParty;
   }
 
