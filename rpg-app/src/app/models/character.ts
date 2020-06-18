@@ -1,4 +1,5 @@
 import {RaceOptions, ClassOptions, GenderOptions} from './character-options';
+import { ThrowStmt } from '@angular/compiler';
 
 
 export class Armor {
@@ -126,15 +127,6 @@ export class Monster extends BaseCharacter {
 }
 
 export class Hero extends BaseCharacter {
-    gender : string;
-    race: string; 
-    characterRole : string;
-    experience : number;
-    level: number;
-    availableSkillPoints: number;
-    hasTrapDefence : boolean;
-    hasDamagingTrap: boolean;
-    turnsUntilSpecialAvailableAgain : number;
 
     constructor(name, gender, race, level, health, skills, weapon, armor){
         super(name, health, skills);
@@ -146,6 +138,16 @@ export class Hero extends BaseCharacter {
         this.equippedWeapon = weapon;
         this.equippedNewArmor(armor);
     }
+
+    gender : string;
+    race: string; 
+    characterRole : string;
+    experience : number;
+    level: number;
+    availableSkillPoints: number;
+    hasTrapDefence : boolean;
+    hasDamagingTrap: boolean;
+    turnsUntilSpecialAvailableAgain : number;
 
     // if you dont want to do anything in your data type, you can assign it as void
     levelUp(): void{
@@ -186,31 +188,111 @@ export class Hero extends BaseCharacter {
 }
 
 export class Warrior  extends Hero {
+
+    // this is to inherit the properties of the parent class which is HERO
     constructor(name, gender, race, level, health, skills, weapon, armor){
         super(name, gender, race, level, health, skills, weapon, armor);
+        
+        this.characterRole = ClassOptions.warrior;
+        this.skills.attack +=2;
+        this.skills.persuade++;
+        this.skills.sneak--;
+        this.skills.intelligence--;
+        // this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/" ;
 
     }
-
+    levelUp():void{
+        this.maxHealth = Math.floor(Math.random() * 10) +1;
+        this.currentHealth = this.maxHealth;
+        // super keyword will let you inherit the method created on the parent. this way, aside from activating its own level up method, it will also activate the one we created in the parent class
+        super.levelUp();
+    }
 
 }
-export class Archer  extends Hero {
+export class Ranger  extends Hero {
     constructor(name, gender, race, level, health, skills, weapon, armor){
         super(name, gender, race, level, health, skills, weapon, armor);
+        
+        this.characterRole = ClassOptions.warrior;
+        this.skills.attack--;
+        this.skills.persuade--;
+        this.skills.sneak +=2;
+        this.skills.intelligence++;
+        // this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/" ;
 
+    }
+    levelUp():void{
+        this.maxHealth = Math.floor(Math.random() * 7) +1;
+        this.currentHealth = this.maxHealth;
+        // super keyword will let you inherit the method created on the parent. this way, aside from activating its own level up method, it will also activate the one we created in the parent class
+        super.levelUp();
     }
 
 }
 export class Mage  extends Hero {
     constructor(name, gender, race, level, health, skills, weapon, armor){
         super(name, gender, race, level, health, skills, weapon, armor);
+        
+        this.characterRole = ClassOptions.warrior;
+        this.skills.attack--;
+        this.skills.persuade++;
+        this.skills.sneak--;
+        this.skills.intelligence+=3;
+        // this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/" ;
 
+    }
+    levelUp():void{
+        this.maxHealth = Math.floor(Math.random() * 5) +1;
+        this.currentHealth = this.maxHealth;
+        // super keyword will let you inherit the method created on the parent. this way, aside from activating its own level up method, it will also activate the one we created in the parent class
+        super.levelUp();
     }
 
 }
 export class Cleric  extends Hero {
     constructor(name, gender, race, level, health, skills, weapon, armor){
         super(name, gender, race, level, health, skills, weapon, armor);
+        
+        this.characterRole = ClassOptions.warrior;
+        this.skills.attack ++;
+        this.skills.persuade +=2;
+        this.skills.sneak--;
+        this.skills.intelligence--;
+        // this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/" ;
 
     }
+    levelUp():void{
+        this.maxHealth = Math.floor(Math.random() * 10) +1;
+        this.currentHealth = this.maxHealth;
+        // super keyword will let you inherit the method created on the parent. this way, aside from activating its own level up method, it will also activate the one we created in the parent class
+        super.levelUp();
+    }
 
+}
+
+export const checkRace = (hero: Hero) => {
+    switch (hero.race) {
+        case RaceOptions.human:
+            hero.skills.persuade +=2;
+            hero.skills.intelligence++;
+            hero.skills.sneak -=2;
+            break;
+        case RaceOptions.elf:
+            hero.skills.persuade--;
+            hero.skills.intelligence +=2;
+            hero.skills.sneak++;
+            break;
+        case RaceOptions.dwarf:
+            hero.skills.attack +=2;
+            hero.skills.intelligence -=2;
+            hero.skills.sneak++;
+            break;
+        case RaceOptions.beast:
+            hero.skills.attack +=3;
+            hero.skills.intelligence -=2;
+            hero.skills.persuade -=2;
+            break;
+        default:
+            break;
+    }
 }

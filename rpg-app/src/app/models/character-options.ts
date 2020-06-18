@@ -8,7 +8,7 @@ export enum RaceOptions {
 export enum ClassOptions {
     warrior = "Warrior",
     mage = "Mage",
-    archer = "Archer",
+    ranger = "Ranger",
     cleric = "Cleric"
 }
 
@@ -28,7 +28,7 @@ export const CharacterOptions = {
     classes: [
         ClassOptions.warrior,
         ClassOptions.mage,
-        ClassOptions.archer,
+        ClassOptions.ranger,
         ClassOptions.cleric,
     ],
     genders : [
