@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GameControllerService } from 'src/app/services/game-controller.service';
+import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'fight-component',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FightComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private gameController : GameControllerService , 
+    private route : Route
+  ) { }
 
   ngOnInit(): void {
   }
+
+
+
 
 }

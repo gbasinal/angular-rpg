@@ -1,0 +1,57 @@
+.fight-page-container {
+    .fight-page-wrapper {
+        height: 100vh;
+        .hero, .enemy {
+            height: 33.33%;
+            img {
+                width: 65%;
+                height: calc(100% - 20px);
+            }
+            &.active {
+                border: 3px solid gold;
+            }
+            &.targetable {
+                border : 3px solid green;
+                cursor: pointer;
+            }
+        }
+        .enemy {
+            img {
+                transform: scaleX(-1);
+            }
+            &.targetable {
+                border: 3px solid red;
+            }
+        }
+        .health-bar {
+            height: 20px;
+            .progress-bar {
+                color: black;
+                background-color: red;
+                padding: 7px 0px;
+            }
+        }
+        .message-box {
+            height: 30%;
+            background-color: rgba(0 , 0 , 0 , .5);
+            color: white;
+            border: 3px solid #d2b48c;
+            padding: 10px;
+            border-radius: 7px;
+            overflow-y : auto;
+        }
+
+        .options-bar {
+            background-color: #d2b48c;
+            border-top: 2px solid darkgreen;
+        }
+
+        .action-option {
+            cursor: pointer;
+            &.selected {
+                background-color : #fc7233;
+                color: black;
+            }
+        }
+    }
+}
