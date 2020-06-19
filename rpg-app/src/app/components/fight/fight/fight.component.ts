@@ -120,4 +120,47 @@ export class FightComponent implements OnInit {
       this.displayMessage = `Please select an action option.`;
     }
   }
+
+  attack(target : BaseCharacter) {
+    // this will unset the target by removing the class for adding borders for the selected hero/enemy
+    this.availableTargets = Teams.none;
+    if(this.currentCharacter.attack() >= target.barriers.attack){
+      let damage = this.currentCharacter.dealDamage();
+      target.currentHealth -= damage;
+      this.displayMessage = `${this.currentCharacter.name} hit ${target.name} dealing ${damage} damage.`;
+      setTimeout(()=> {
+        if(target.currentHealth <=0 ) {
+          target.isIncapacitated = true;
+          // this condition will increase the number of dead/incapacitated in the party of either hero or enemy
+          this.heroTurn ? this.enemiesIncapacitated++ : this.heroesIncapacitated++;
+          this.checkIfWin();
+        }else {
+          this.nextTurn();
+        }
+      }, this.actionDelay);
+    }else {
+      this.displayMessage = `${this.currentCharacter.name} Missed.`;
+      setTimeout(()=>{
+        this.nextTurn();
+      },this.actionDelay)
+    }
+  }
+
+  checkIfWin(){
+    this.selectedAction = FightOptions.none;
+    if(this.enemiesIncapacitated === this.enemyParty.length){
+      this.displayMessage = `All enemies have been defeated!`;
+      this.successMessages = this.gameController.encounterSuccess();
+      this.showNextChapterButton = true;
+      this.gameController.isFighting = false;
+      return;
+    }
+    if(this.heroesIncapacitated === this.heroParty.length) {
+      this.displayMessage = `All heroes have been defeated. You have lost.`;
+      this.showGameOverButton = true;
+      this.gameController.isFighting = false;
+      return;
+    }
+    this.nextTurn();
+  }
 }
