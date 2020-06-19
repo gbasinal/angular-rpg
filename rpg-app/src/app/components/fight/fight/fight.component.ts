@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-fight',
+  selector: 'fight-component',
   templateUrl: './fight.component.html',
   styleUrls: ['./fight.component.scss']
 })
