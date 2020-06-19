@@ -198,7 +198,7 @@ export class Warrior  extends Hero {
         this.skills.persuade++;
         this.skills.sneak--;
         this.skills.intelligence--;
-        // this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/" ;
+        this.spriteUrl = this.gender === GenderOptions.male ? "./assets/characters/warrior-male.png" : "./assets/characters/warrior-male.png" ;
 
     }
     levelUp():void{
@@ -218,7 +218,7 @@ export class Ranger  extends Hero {
         this.skills.persuade--;
         this.skills.sneak +=2;
         this.skills.intelligence++;
-        // this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/" ;
+        this.spriteUrl = this.gender === GenderOptions.male ? "./assets/characters/warrior-male.png" : "./assets/characters/warrior-male.png" ;
 
     }
     levelUp():void{
@@ -238,7 +238,7 @@ export class Mage  extends Hero {
         this.skills.persuade++;
         this.skills.sneak--;
         this.skills.intelligence+=3;
-        // this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/" ;
+        this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/characters/warrior-male.png" ;
 
     }
     levelUp():void{
@@ -258,7 +258,7 @@ export class Cleric  extends Hero {
         this.skills.persuade +=2;
         this.skills.sneak--;
         this.skills.intelligence--;
-        // this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/" ;
+        this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/characters/warrior-male.png" ;
 
     }
     levelUp():void{
