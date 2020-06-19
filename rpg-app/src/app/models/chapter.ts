@@ -24,6 +24,7 @@ export enum SuccessOptions {
 export class Chapter {
     // we set it to array so that we can display 1 line per paragraph insted of a bulk of text
     story : string[];
+    
     options: CharacterActions[];
     enemyParty: Monster[];
     sneakPersuadeFail: CharacterActions;
