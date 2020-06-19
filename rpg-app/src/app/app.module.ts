@@ -10,6 +10,7 @@ import { FightComponent } from './components/fight/fight/fight.component';
 import { InventoryComponent } from './components/inventory/inventory/inventory.component';
 import { StartComponent } from './components/start/start/start.component';
 import { StoryComponent } from './components/story/story/story.component';
+import { GameControllerService } from './services/game-controller.service';
 
 // Route is where you will creat the urls for the component's display
 const routes: Routes = [
@@ -38,7 +39,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FormsModule
   ],
-  providers: [],
+  providers: [
+    GameControllerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
