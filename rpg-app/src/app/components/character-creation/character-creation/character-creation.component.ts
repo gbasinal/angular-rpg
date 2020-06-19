@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CharacterOptions} from '../../../models/character-options';
+import { GameControllerService } from "../../../services/game-controller.service"
 
 @Component({
   selector: 'app-character-creation',
@@ -8,11 +9,11 @@ import {CharacterOptions} from '../../../models/character-options';
 })
 export class CharacterCreationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private gameControllerService: GameControllerService ) { }
 
   character = {
-    race : "--Choose--",
-    class : "--Choose--",
+    race : undefined,
+    class : undefined,
     gender : undefined,
     name : undefined
   }
@@ -62,7 +63,8 @@ export class CharacterCreationComponent implements OnInit {
       return;
     }
 
-    console.log(this.character);
+    this.gameControllerService.setMainCharacter(this.character)
+    
   }
 
 

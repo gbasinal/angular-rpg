@@ -124,4 +124,7 @@ export class GameControllerService {
     this.router.navigateByUrl("/");
   }
 
+
+
+
 }
