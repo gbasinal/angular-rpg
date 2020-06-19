@@ -163,4 +163,22 @@ export class FightComponent implements OnInit {
     }
     this.nextTurn();
   }
+
+  nextTurn() {
+    if(this.currentCharacter instanceof Monster && this.currentCharacter.poisonStacks && !this.currentCharacter.hasTakenPoisonDamageThisTurn) {
+      this.currentCharacter.hasTakenPoisonDamageThisTurn = true;
+      let maxDamage = this.currentCharacter.isStrongPoisoned ? 6 : 3;
+      let poisonDamage = (Math.floor(Math.random() * maxDamage) + 1) * this.currentCharacter.currentHealth;
+      this.currentCharacter.currentHealth -= poisonDamage;
+      this.displayMessage = `${this.currentCharacter.name} took ${poisonDamage}`;
+      if(this.currentCharacter.currentHealth <= 0 ) {
+        this.currentCharacter.isIncapacitated = true;
+        this.enemiesIncapacitated++;
+      }
+      setTimeout(()=>{
+        this.checkIfWin();
+      },this.actionDelay);
+      return;
+    }
+  }
 }
