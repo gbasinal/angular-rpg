@@ -1,0 +1,21 @@
+.story-component-page-container {
+    .story-component-page-wrapper {
+        height: 100vh;
+        .body-content {
+            .story-container {
+                background-color: rgba(0 , 0 , 0 , 0.5);
+                border: 3px solid #d2b48c;
+                border-radius: 7px;
+                overflow-y: auto;
+                .encounter-option {
+                    cursor: pointer;
+                }
+            }
+        }
+        .options-bar-container {
+            .options-bar {
+                border-top: 2px solid darkgreen;
+            }
+        }
+    }
+}
