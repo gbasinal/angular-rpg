@@ -20,6 +20,7 @@
                     <div class="race-container">
                         <div class="race-wrapper">
                             <h3>Race</h3>
+                            <p *ngIf="!character.race">--Choose--</p>
                             <p>{{character.race}}</p>
                         </div>
                     </div>
@@ -27,6 +28,7 @@
                     <div class="class-container">
                         <div class="class-wrapper">
                             <h3>Class</h3>
+                            <p *ngIf="!character.class">--Choose--</p>
                             <p>{{character.class}}</p>
                         </div>
                     </div>
