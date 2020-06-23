@@ -12,7 +12,7 @@ export class GameControllerService {
 
   mainCharacter: Hero;
   currentChapter: Chapter = Chapter1;
-  // this flag is to make sure that when there is a fighting encounter, the user can only do fighting options and not using items in inventory
+  // this flag is to make sure that when there is a fighting encounter, the user can only do fighting options and not using items in inventory. this alsomake sure that you can access your inventory if tehre is no fighting
   isFighting: boolean = false;
 
   // this will set the delay per action whenever you are in an encounter.
