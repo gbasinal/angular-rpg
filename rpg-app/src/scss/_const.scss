@@ -1,0 +1,45 @@
+// Functions for px to em conversion
+$browser-context: 18; // Default
+@function em($pixels, $context: $browser-context) {
+    @return #{$pixels/$context}em;
+}
+
+@function px($pixels, $context: $browser-context) {
+    @return #{$pixels/$context};
+}
+
+// Mixins for default styles 
+
+$base : 18;
+$base-height : 22.5;
+
+
+@mixin textStyle( $color , $size: $base, $lspace, $lheight: $base-height , $weight: normal ) {
+    color: $color;
+    font-size: em($size);
+    letter-spacing: #{$lspace/$base}em;
+    line-height:  $lheight/$size;
+    font-weight: $weight;
+}
+
+@mixin bgSettings($size , $repeat , $position ) {
+    background-size: $size;
+    background-repeat: $repeat;
+    background-position: $position;
+}
+
+// fonts
+
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+$headerFont : 'Uncial Antiqua', cursive;
+
+
+
+// default variables
+
+$headerColor : #af5917;
+
+$grey : #ececec;
+$black : #191313;
+$orange : #fc7233;
+$brown : #a56e35;
