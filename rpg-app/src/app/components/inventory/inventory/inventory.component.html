@@ -23,27 +23,27 @@
                     <div class="row available-heroes-screen h-100" *ngIf="showAvailableHeroesScreen">
                         <div class="col-4 p-3 text-center" *ngFor="let hero of availableHeroes">
                             <img [src]="hero.spriteUrl" alt="hero.name" class="img-fluid mb-3">
-                            <h5>{{hero.name}} - {{herp.characterRole}} -- lvl {{hero.level}}</h5>
+                            <h5>{{hero.name}} - {{hero.characterRole}} -- lvl {{hero.level}}</h5>
+                            <div class="row">
+                                <div class="col skill d-flex flex-column">
+                                    <h6>ATK</h6>
+                                    <p>{{hero.skills.attack}}</p>
+                                </div>
+                                <div class="col skill d-flex flex-column">
+                                    <h6>SNK</h6>
+                                    <p>{{hero.skills.sneak}}</p>
+                                </div>
+                                <div class="col skill d-flex flex-column">
+                                    <h6>PERS</h6>
+                                    <p>{{hero.skills.persuade}}</p>
+                                </div>
+                                <div class="col skill d-flex flex-column">
+                                    <h6>INT</h6>
+                                    <p>{{hero.skills.intelligence}}</p>
+                                </div>
+                            </div>
+                            <button class="btn" (click)="addHeroToParty">Add to Party</button>
                         </div>
-                        <div class="row">
-                            <div class="col skill d-flex flex-column">
-                                <h6>ATK</h6>
-                                <p>{{herp.skills.attack}}</p>
-                            </div>
-                            <div class="col skill d-flex flex-column">
-                                <h6>SNK</h6>
-                                <p>{{herp.skills.sneak}}</p>
-                            </div>
-                            <div class="col skill d-flex flex-column">
-                                <h6>PERS</h6>
-                                <p>{{herp.skills.persuade}}</p>
-                            </div>
-                            <div class="col skill d-flex flex-column">
-                                <h6>INT</h6>
-                                <p>{{herp.skills.intelligence}}</p>
-                            </div>
-                        </div>
-                        <button class="btn" (click)="addHeroToParty">Add to Party</button>
                     </div>
                 </div>
                 <div class="row" *ngIf="!showAvailableHeroesScreen">
