@@ -7,13 +7,43 @@
     background-image : url("../../../../assets/backgrounds/introduction-bg.jpg");
     @include bgSettings(cover,no-repeat ,center );
     position: relative;
+    @media only screen and (max-width:767px){
+        background-image : url("../../../../assets/backgrounds/introduction-bg-mobile.jpg");
+        
+    }
+    
     .introduction-component-wrapper {
+        @media only screen and (max-width: 767px){
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
         .intro-content-wrapper {
             position: absolute;
             width: em(400);
             left: em(380);
             transform: rotate(-9deg);
             top: em(100);
+            @media only screen and (max-width: 1024px) {
+                width: em(450);
+                left: em(90);
+                top: em(230);
+            }
+            @media only screen and (max-width: 991px) {
+                width: em(360);
+                left: em(90);
+                top: em(230);
+            }
+            @media only screen and (max-width: 767px){
+                transform: rotate(0deg);
+                left: 0;
+                top: 130px;
+                width: 100%;
+                padding: 20px 50px;
+                
+                position: relative;
+            }
             p {
                 @include textStyle($black , 16, 1.5, 16, 400);
             }
@@ -23,6 +53,22 @@
             bottom: em(200);
             left: em(720);
             transform: rotate(-9deg);
+            @media only screen and (max-width: 1024px) {
+                left: em(550);
+                bottom: em(300);
+            }
+            @media only screen and (max-width: 991px) {
+                left: em(350);
+                bottom: em(250);
+            }
+            @media only screen and (max-width: 767px){
+                transform: rotate(0deg);
+                left: 0;
+                bottom: 100px;
+                position: relative;
+                padding: 25px 50px;
+                text-align: right;
+            }
             a{
                 @include textStyle($brown , 16, 2, 16, 700);
                 padding-bottom: em(3);
