@@ -9,9 +9,16 @@ export class StartComponent implements OnInit {
 
   constructor() { }
 
-  gameTitle="AngularRPG"
+  gameTitle : string = "AngularRPG"
+  isDelayOver : boolean = false;
+  delay : number = 1500;
+
 
   ngOnInit(): void {
+    setTimeout(()=> {
+      this.isDelayOver = true;
+    },this.delay)
+    
   }
 
 }

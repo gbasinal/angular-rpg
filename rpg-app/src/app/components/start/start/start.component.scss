@@ -15,6 +15,11 @@
         align-items: center;
         position: relative;
         .header-title-wrapper {
+            opacity: 0;
+            transition: .4s opacity;
+            &.loaded {
+                opacity: 1;
+            }
             h1 {
                 font-size: em(70);
                 font-weight: 700;
