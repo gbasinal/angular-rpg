@@ -1,32 +1,6 @@
-// Functions for px to em conversion
-$browser-context: 18; // Default
-@function em($pixels, $context: $browser-context) {
-    @return #{$pixels/$context}em;
-}
-
-@function px($pixels, $context: $browser-context) {
-    @return #{$pixels/$context};
-}
-
-// Mixins for default styles 
-
-$base : 18;
-$base-height : 22.5;
+@import '~src/scss/const';
 
 
-@mixin textStyle( $color , $size: $base, $lspace, $lheight: $base-height , $weight: normal ) {
-    color: $color;
-    font-size: em($size);
-    letter-spacing: #{$lspace/$base}em;
-    line-height:  $lheight/$size;
-    font-weight: $weight;
-}
-
-@mixin bgSettings($size , $repeat , $position ) {
-    background-size: $size;
-    background-repeat: $repeat;
-    background-position: $position;
-}
 
 
 .start-component-container {
@@ -39,16 +13,32 @@ $base-height : 22.5;
         display: flex;
         height: 100%;
         align-items: center;
+        position: relative;
         .header-title-wrapper {
             h1 {
                 font-size: em(70);
                 font-weight: 700;
+                font-family: $headerFont;
+                text-shadow: -2px -1px 5px rgba(150, 150, 150, 0.95);
+                color: $headerColor;
+
+                // @include textStyle($headerColor, , , , )
             }
             .start-container{
                 margin-bottom: em(10);
+                a {
+   
+                    font-weight: 700;
+                    letter-spacing: 1.3px;
+                    &:hover {
+                        transform : scale(1.05);
+                    }
+                }
             }
             .created-container {
-
+                p {
+                    font-size: em(14);
+                }
             }
         }
     }

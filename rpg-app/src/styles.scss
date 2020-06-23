@@ -1,35 +1,4 @@
-// Functions for px to em conversion
-$browser-context: 18; // Default
-@function em($pixels, $context: $browser-context) {
-    @return #{$pixels/$context}em;
-}
-
-@function px($pixels, $context: $browser-context) {
-    @return #{$pixels/$context};
-}
-
-// Mixins for default styles 
-
-$base : 18;
-$base-height : 22.5;
-
-
-@mixin textStyle( $color , $size: $base, $lspace, $lheight: $base-height , $weight: normal ) {
-    color: $color;
-    font-size: em($size);
-    letter-spacing: #{$lspace/$base}em;
-    line-height:  $lheight/$size;
-    font-weight: $weight;
-}
-
-@mixin bgSettings($size , $repeat , $position ) {
-    background-size: $size;
-    background-repeat: $repeat;
-    background-position: $position;
-}
-
-$grey : #ececec;
-$orange : #fc7233;
+@import '~src/scss/const';
 
 
 * {
@@ -42,6 +11,13 @@ body {
 	-webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: $grey;
+    font-size: 1.111vw;
+    @media only screen and (max-width: 1024px){
+        font-size: 16px;
+    }
+    @media only screen and (max-width: 767px){
+        font-size: 12px;
+    }
 }
 
 .section {
@@ -74,6 +50,7 @@ input {
     padding: em(10) em(25);
     letter-spacing: 1.2px;
     font-family: 'Raleway', sans-serif;
+    transition: all .4s;
     &--orange-fill {
         background-color: $orange;
         color: $grey;
@@ -91,6 +68,18 @@ input {
         &:hover {
             background-color: $orange;
             color: white;
+            
+        }
+    }
+
+    &--brown-border {
+        background-color: transparent;
+        color: $black;
+        border: 2px solid $brown;
+        &:hover {
+            background-color: rgba(165, 110, 53, .7);
+            color: white;
+            border-color: transparent;
             
         }
     }
