@@ -3,8 +3,7 @@ import { GameControllerService } from 'src/app/services/game-controller.service'
 import { Router } from '@angular/router';
 import { Hero, Monster } from 'src/app/models/character';
 import { CharacterActions } from 'src/app/models/chapter';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
-import { ThrowStmt } from '@angular/compiler';
+
 
 @Component({
   selector: 'story-component',

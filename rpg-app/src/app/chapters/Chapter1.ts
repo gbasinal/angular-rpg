@@ -18,7 +18,7 @@ export const Chapter1: Chapter = {
     ],
     // This will be the base stats of the monster or enemy that the hero will encounter
     enemyParty : [
-        new Monster("Slime", 5, {attack : 2 , sneak : 1 , persuade: 0}, {attack: 10, sneak: 10, persuade: 10}, 1 , 3, "../../assets/monster/slime.png")
+        new Monster("Slime", 5, {attack : 2 , sneak : 1 , persuade: 0}, {attack: 10, sneak: 10, persuade: 10}, 1 , 3, "../../assets/monsters/slime.png")
     ],
     // If sneaking or persuading fails, character will only have an option to attack
     sneakPersuadeFail : CharacterActions.attack,
