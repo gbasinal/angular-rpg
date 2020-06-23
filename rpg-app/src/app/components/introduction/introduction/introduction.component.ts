@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-introduction',
+  selector: 'introduction-component',
   templateUrl: './introduction.component.html',
   styleUrls: ['./introduction.component.scss']
 })
@@ -11,5 +11,7 @@ export class IntroductionComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  introductionMessage : string[] = [];
 
 }

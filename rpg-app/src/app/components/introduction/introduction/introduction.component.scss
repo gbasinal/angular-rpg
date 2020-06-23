@@ -1,0 +1,46 @@
+@import '~src/scss/const';
+
+
+.introduction-component-container {
+    width: 100%;
+    height: 100vh;
+    background-image : url("../../../../assets/backgrounds/introduction-bg.jpg");
+    @include bgSettings(cover,no-repeat ,center );
+    position: relative;
+    .introduction-component-wrapper {
+        .intro-content-wrapper {
+            position: absolute;
+            width: em(400);
+            left: em(380);
+            transform: rotate(-9deg);
+            top: em(100);
+            p {
+                @include textStyle($black , 16, 1.5, 16, 400);
+            }
+        }
+        .btn-container{
+            position: absolute;
+            bottom: em(200);
+            left: em(720);
+            transform: rotate(-9deg);
+            a{
+                @include textStyle($brown , 16, 2, 16, 700);
+                padding-bottom: em(3);
+                position: relative;
+                i {
+                    color: $brown;
+                    font-size: 140%;
+                    position: absolute;
+                    top: 50%; 
+                    transform: translateY(-50%);
+                    right: em(-15);
+                }
+                &:hover {
+                    text-decoration: none;
+                    border-bottom: 2px solid $brown;
+                }
+
+            }
+        }
+    }
+}
