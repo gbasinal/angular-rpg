@@ -11,6 +11,7 @@ import { InventoryComponent } from './components/inventory/inventory/inventory.c
 import { StartComponent } from './components/start/start/start.component';
 import { StoryComponent } from './components/story/story/story.component';
 import { GameControllerService } from './services/game-controller.service';
+import { IntroductionComponent } from './components/introduction/introduction/introduction.component';
 
 // Route is where you will creat the urls for the component's display
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: "character-creation", component: CharacterCreationComponent},
   {path: "fight", component: FightComponent},
   {path: "", component: StartComponent},
+  {path: "introduction", component: IntroductionComponent},
   // ** means that when a user tries to navigate to any random end url , the user will be directed to the base url
   {path: "**", redirectTo: ""}
 ]
@@ -31,7 +33,8 @@ const routes: Routes = [
     FightComponent,
     InventoryComponent,
     StartComponent,
-    StoryComponent
+    StoryComponent,
+    IntroductionComponent
   ],
   imports: [
     BrowserModule,
