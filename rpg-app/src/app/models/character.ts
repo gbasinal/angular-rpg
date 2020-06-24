@@ -274,26 +274,32 @@ export class Cleric  extends Hero {
 export const checkRace = (hero: Hero) => {
     switch (hero.race) {
         case RaceOptions.human:
-            hero.skills.persuade +=2;
+            hero.skills.persuade +=3;
             hero.skills.intelligence++;
-            hero.skills.sneak -=2;
+            hero.skills.sneak --;
+            hero.skills.attack+=2;
             break;
         case RaceOptions.elf:
-            hero.skills.persuade--;
+            hero.skills.persuade++;
             hero.skills.intelligence +=2;
-            hero.skills.sneak++;
+            hero.skills.sneak+=3;
+            hero.skills.attack--;
             break;
         case RaceOptions.dwarf:
-            hero.skills.attack +=2;
-            hero.skills.intelligence -=2;
-            hero.skills.sneak++;
+            hero.skills.attack +=3;
+            hero.skills.intelligence ++;
+            hero.skills.sneak +=2;
+            hero.skills.persuade--;
             break;
         case RaceOptions.beast:
             hero.skills.attack +=3;
-            hero.skills.intelligence -=2;
-            hero.skills.persuade -=2;
+            hero.skills.intelligence--;
+            hero.skills.persuade --;
+            hero.skills.sneak+=3;
             break;
         default:
             break;
     }
 }
+
+

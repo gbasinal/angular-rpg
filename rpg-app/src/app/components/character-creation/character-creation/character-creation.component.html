@@ -1,76 +1,116 @@
 <section class="character-creation-container section">
     <div class="character-creation-wrapper">
-        <div class="container-fluid">
-            <div class="header-container">
-                <h1>Character Creation:</h1>
-            </div>
-            <div class="row h-100">
-                <div class="col-3  sidebar sidebar--races-container">
-                    <div class="sidebar-header--wrapper">
-                        <h2>Races</h2>
-                    </div>
-                    <ul>
-                        <li *ngFor="let race of races" (click)="changeRace(race)" [class.active]="character.race === race" class="mb-3 py-2">
-                            {{race}}
-                        </li>
-                    </ul>
+        <div class="header-container">
+            <h1>Your Character Information:</h1>
+        </div>
+        <div class="race-container modal-race modal" [class.modal-is-active]="isModalOpen">
+            <div class="race-wrapper">
+                <div class="header-wrapper">
+                    <h2>Please choose your Race:</h2>
                 </div>
-                <div class="col-6 character-info-container text-center text-white p-3">
-
-                    <div class="race-container">
-                        <div class="race-wrapper">
-                            <h3>Race</h3>
-                            <p *ngIf="!character.race">--Choose--</p>
-                            <p>{{character.race}}</p>
-                        </div>
-                    </div>
-
-                    <div class="class-container">
-                        <div class="class-wrapper">
-                            <h3>Class</h3>
-                            <p *ngIf="!character.class">--Choose--</p>
-                            <p>{{character.class}}</p>
-                        </div>
-                    </div>
-
-
-                    <div class="gender-container">
-                        <div class="gender-wrapper">
-                            <h3>Gender</h3>
-                            <div class="d-flex justify-content-center">
-                                <div class="btn--gender mr-1" [class.active]="character.gender === 'Male'" (click)="changeGender('Male')">
-                                    <i class="fas fa-mars"></i>
-                                </div>
-                                <div class="btn--gender ml-1" [class.active]="character.gender === 'Female'" (click)="changeGender('Female')">
-                                    <i class="fas fa-venus"></i>
-                                </div>
-        
+                <div class="race-intro-message-wrapper">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam rerum aspernatur quae consectetur sed at repellendus fuga, voluptatibus fugit in.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, reiciendis?</p>
+                </div>
+                <div class="race-character-description-wrapper">
+                    <div class="item-wrapper " *ngFor="let race of races"  [ngClass]="stats[race].isSelected ? 'selected' : ''  " >
+                        <div class="item item-base-information-wrapper" *ngIf="!itemFlipped[race].isFlipped" (click)="changeRace(race) ; makeFlipAnimation(race , true)" >
+                            <h4>{{race}}</h4>
+                            <div class="race-image-container">
+                                <img src="../../../../assets/characters/warrior-male.png" alt="">
+                            </div>
+                            <div class="race-stats-wrapper">
+                                <h5>Base Stats:</h5>
+                                <ul >
+                                    <li>Attack : {{stats[race].attack}}</li>
+                                    <li>Sneak : {{stats[race].sneak}}</li>
+                                    <li>Persuade : {{stats[race].persuade}}</li>
+                                    <li>Intelligence : {{stats[race].intelligence}}</li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="name-container">
-                        <div class="name-wrapper">
-                            <h3>Name</h3>
-                            <div class="form-name-wrapper">
-                                <input type="text" placeholder="Name" class="mb-3 px-2" [(ngModel)]="character.name" (input)="changeName()">
-                                <button class="btn btn--orange-fill" [class.disabled]="!characterComplete" (click)="createCharacter()">Create Character</button>
-                            </div>
-
+                        <div class="item item-story-wrapper" *ngIf="itemFlipped[race].isFlipped">
+                            <h4>{{race}}</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, a! Aliquid perferendis sit exercitationem perspiciatis reiciendis maiores architecto nihil ullam.</p>
+                            <button class="btn btn--text btn--back" (click)="makeFlipAnimation(race , false)"><i class="fas fa-caret-left"></i> Back</button>
                         </div>
                     </div>
                 </div>
-                <div class="col-3 sidebar sidebar--classes-container ">
-                    <div class="sidebar-header--wrapper">
-                        <h2>Classes</h2>
-                    </div>
-                    <ul>
-                        <li *ngFor="let class of classes" (click)="changeClass(class)" [class.active]="character.class === class" class="mb-3 py-2">
-                            {{class}}
-                        </li>
-                    </ul>
+                <div class="race-confirmation-wrapper">
+                    
+                    <h5>You have chosen:  {{character.race}}</h5>
+                    <button class="btn btn--text">Next <i class="fas fa-caret-right"></i></button>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- 
+<div class="row h-100">
+    <div class="col-3  sidebar sidebar--races-container">
+        <div class="sidebar-header--wrapper">
+            <h2>Races</h2>
+        </div>
+        <ul>
+            <li *ngFor="let race of races" (click)="changeRace(race)" [class.active]="character.race === race" class="mb-3 py-2">
+                {{race}}
+            </li>
+        </ul>
+    </div>
+    <div class="col-6 character-info-container text-center text-white p-3">
+
+        <div class="race-container">
+            <div class="race-wrapper">
+                <h3>Race</h3>
+                <p *ngIf="!character.race">--Choose--</p>
+                <p>{{character.race}}</p>
+            </div>
+        </div>
+
+        <div class="class-container">
+            <div class="class-wrapper">
+                <h3>Class</h3>
+                <p *ngIf="!character.class">--Choose--</p>
+                <p>{{character.class}}</p>
+            </div>
+        </div>
+
+
+        <div class="gender-container">
+            <div class="gender-wrapper">
+                <h3>Gender</h3>
+                <div class="d-flex justify-content-center">
+                    <div class="btn--gender mr-1" [class.active]="character.gender === 'Male'" (click)="changeGender('Male')">
+                        <i class="fas fa-mars"></i>
+                    </div>
+                    <div class="btn--gender ml-1" [class.active]="character.gender === 'Female'" (click)="changeGender('Female')">
+                        <i class="fas fa-venus"></i>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="name-container">
+            <div class="name-wrapper">
+                <h3>Name</h3>
+                <div class="form-name-wrapper">
+                    <input type="text" placeholder="Name" class="mb-3 px-2" [(ngModel)]="character.name" (input)="changeName()">
+                    <button class="btn btn--orange-fill" [class.disabled]="!characterComplete" (click)="createCharacter()">Create Character</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-3 sidebar sidebar--classes-container ">
+        <div class="sidebar-header--wrapper">
+            <h2>Classes</h2>
+        </div>
+        <ul>
+            <li *ngFor="let class of classes" (click)="changeClass(class)" [class.active]="character.class === class" class="mb-3 py-2">
+                {{class}}
+            </li>
+        </ul>
+    </div>
+</div> -->

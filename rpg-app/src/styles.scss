@@ -21,7 +21,7 @@ body {
 }
 
 .section {
-    // padding : em(10) em(15);
+    padding : em(10) em(25);
 }
 
 h1, h2, h3, h4 {
@@ -81,6 +81,24 @@ input {
             color: white;
             border-color: transparent;
             
+        }
+    }
+    &--text {
+        background-color: transparent;
+        padding: 0;
+        color: $orange;
+        border: 0;
+
+        border-radius: 0;
+        outline: none;
+        i {
+            color: $orange;
+        }
+        &:hover {
+            color: $orange;
+        }
+        &:focus {
+            outline: none !important;
         }
     }
 }

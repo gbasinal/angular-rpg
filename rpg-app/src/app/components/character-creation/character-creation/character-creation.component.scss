@@ -1,19 +1,4 @@
-// Functions for px to em conversion
-$browser-context: 18; // Default
-@function em($pixels, $context: $browser-context) {
-    @return #{$pixels/$context}em;
-}
-
-@function px($pixels, $context: $browser-context) {
-    @return #{$pixels/$context};
-}
-
-// Mixins for default styles 
-
-
-$grey : #ececec;
-$orange : #fc7233;
-
+@import '~src/scss/const';
 
 
 .character-creation-container {
@@ -21,67 +6,146 @@ $orange : #fc7233;
     .character-creation-wrapper {
         .header-container {
             padding-bottom: em(100);
+            h1 {
+                font-family: $headerFont;
+                @include textStyle ($headerColor, 40, 1.1, 40 , 700);
+            }
         }
-        .sidebar {
-            // padding-left : em(50);
-            ul {
-                margin: 0;
-                padding: 0;
-                li {
-                    list-style-type: none;
+        .race-container {
+            background-color: rgba(0, 0, 0, 0.5);
+            &.modal-is-active {
+                display: flex !important;
+                justify-content: center  ;
+                align-items: center;
+            }
+            .race-wrapper {
+                height: em(650);
+                background: white;
+                width: 80%;
+                padding: em(25);
+                border-radius: 7px;
+                -webkit-box-shadow: 0px 0px 8px 0px rgba(204,204,204,1);
+                -moz-box-shadow: 0px 0px 8px 0px rgba(204,204,204,1);
+                box-shadow: 0px 0px 8px 0px rgba(204,204,204,1);
+                padding-bottom: em(15);
+            }
+            .race-character-description-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: em(25);
+                .item-wrapper {
                     cursor: pointer;
-                    &.active {
-                        color: $orange;
-                        font-weight: 700;
+                    width: calc(25% - 1em);
+                    padding: em(15);
+                    border-radius: 7px;
+                    border: 1px solid transparent;
+                    position: relative;
+                    &:hover {
+                        border: 1px solid $orange;
+                        box-shadow: 0px 0px 4px 0px rgba(204,204,204,1);
                     }
-                }
-            }
-            &--classes-container {
-                text-align: right;
-            }
-
-        }
-        .character-info-container {
-            .race-container {
-
-            }
-            .gender-container {
-                .btn--gender  {
-                    width: em(25);
-                    height: em(25);
-                    &.active {
-                        background-color : $orange;
-
+                    &.selected {
+                        border: 1px solid $orange;
+                        box-shadow: 0px 0px 4px 0px rgba(204,204,204,1);
                     }
-                    i {
-                        cursor: pointer;
+                    .item {
+                        min-height: em(375);
+                        &.item-base-information-wrapper {
+                            .race-stats-wrapper {
+                                ul {
+                                    margin: 0;
+                                    padding: 0;
+                                    li {
+                                        list-style-type: none;
+                                    }
+                                }
+                            }
+                        }
+                        &.item-story-wrapper {
+                            .btn--back {
+                                position: absolute;
+                                bottom: 0;
+                                right: 0;
+                                margin: em(10);
+                                border : 0;
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
                     }
+
                     
                 }
             }
-            .class-container {
-                
-            }
-            .name-container {
-                .name-wrapper {
-                    .form-name-wrapper {
-                        display: flex;
-                        flex-direction: column;
-                        width: em(350);
-                        margin: em(25) auto;
-                        input {
-                            border:  1px solid $orange;
-                            padding: em(10) em(5);
-                            background-color: transparent;
-                            border-radius: 5px;
-                        }
-                        button {
-                            border-color: transparent;
-                            
-                        }
-                    }
-                }
+            .race-confirmation-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
             }
         }
+        // .sidebar {
+        //     // padding-left : em(50);
+        //     ul {
+        //         margin: 0;
+        //         padding: 0;
+        //         li {
+        //             list-style-type: none;
+        //             cursor: pointer;
+        //             &.active {
+        //                 color: $orange;
+        //                 font-weight: 700;
+        //             }
+        //         }
+        //     }
+        //     &--classes-container {
+        //         text-align: right;
+        //     }
+
+        // }
+        // .character-info-container {
+        //     .race-container {
+
+        //     }
+        //     .gender-container {
+        //         .btn--gender  {
+        //             width: em(25);
+        //             height: em(25);
+        //             &.active {
+        //                 background-color : $orange;
+
+        //             }
+        //             i {
+        //                 cursor: pointer;
+        //             }
+                    
+        //         }
+        //     }
+        //     .class-container {
+                
+        //     }
+        //     .name-container {
+        //         .name-wrapper {
+        //             .form-name-wrapper {
+        //                 display: flex;
+        //                 flex-direction: column;
+        //                 width: em(350);
+        //                 margin: em(25) auto;
+        //                 input {
+        //                     border:  1px solid $orange;
+        //                     padding: em(10) em(5);
+        //                     background-color: transparent;
+        //                     border-radius: 5px;
+        //                 }
+        //                 button {
+        //                     border-color: transparent;
+                            
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
     }
 }

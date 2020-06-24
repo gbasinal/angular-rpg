@@ -18,6 +18,8 @@ export enum GenderOptions {
 }
 
 
+
+
 export const CharacterOptions = {
     races : [
         RaceOptions.human,
