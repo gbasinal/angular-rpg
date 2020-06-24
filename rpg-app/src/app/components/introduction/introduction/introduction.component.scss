@@ -45,6 +45,7 @@
                 position: relative;
             }
             p {
+
                 @include textStyle($black , 16, 1.5, 16, 400);
             }
         }

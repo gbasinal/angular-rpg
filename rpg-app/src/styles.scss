@@ -84,3 +84,10 @@ input {
         }
     }
 }
+
+.animated {
+    .animated-child {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+}
