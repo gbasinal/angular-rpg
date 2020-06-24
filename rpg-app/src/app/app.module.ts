@@ -12,6 +12,8 @@ import { StartComponent } from './components/start/start/start.component';
 import { StoryComponent } from './components/story/story/story.component';
 import { GameControllerService } from './services/game-controller.service';
 import { IntroductionComponent } from './components/introduction/introduction/introduction.component';
+import { PreloaderComponent } from './components/preloader/preloader/preloader.component';
+import { PreloaderService } from './services/preloader-service.service';
 
 // Route is where you will creat the urls for the component's display
 const routes: Routes = [
@@ -22,6 +24,7 @@ const routes: Routes = [
   {path: "fight", component: FightComponent},
   {path: "", component: StartComponent},
   {path: "introduction", component: IntroductionComponent},
+  {path: "loading", component: PreloaderComponent},
   // ** means that when a user tries to navigate to any random end url , the user will be directed to the base url
   {path: "**", redirectTo: ""}
 ]
@@ -34,7 +37,8 @@ const routes: Routes = [
     InventoryComponent,
     StartComponent,
     StoryComponent,
-    IntroductionComponent
+    IntroductionComponent,
+    PreloaderComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,8 @@ const routes: Routes = [
     FormsModule
   ],
   providers: [
-    GameControllerService
+    GameControllerService,
+    PreloaderService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+
 // import { gsap } from "gsap";
 
 declare let gsap :any;
@@ -10,7 +12,10 @@ declare let gsap :any;
 })
 export class IntroductionComponent implements OnInit {
 
-  constructor() { }
+  constructor( ) { 
+    
+
+  }
 
   ngOnInit(): void {
     this.introductionMessageAnimation(); 
