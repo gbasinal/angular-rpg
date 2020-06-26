@@ -26,46 +26,69 @@ export class CharacterCreationComponent implements OnInit {
       sneak : 0,
       persuade : 3,
       intelligence : 1,
-      isSelected : false
     },
     Elf : {
       attack : 0,
       sneak : 3,
       persuade : 1,
       intelligence : 2,
-      isSelected : false
     },
     Dwarf : {
       attack : 3,
       sneak : 2,
       persuade : 0,
       intelligence : 1,
-      isSelected : false
     },
     Beast : {
       attack : 3,
       sneak : 3,
       persuade : 0,
       intelligence : 0,
-      isSelected : false
     }
   }
 
-  itemFlipped = {
-    Human :{
+  options = {
+    Human : {
+      isSelected : false,
       isFlipped : false
     },
-    Elf :{
+    Elf : {
+      isSelected : false,
       isFlipped : false
     },
-    Dwarf :{
+    Dwarf : {
+      isSelected : false,
       isFlipped : false
     },
-    Beast :{
+    Beast : {
+      isSelected : false,
+      isFlipped : false
+    },
+    Warrior : {
+      isSelected : false,
+      isFlipped : false
+    },
+    Mage : {
+      isSelected : false,
+      isFlipped : false
+    },
+    Ranger : {
+      isSelected : false,
+      isFlipped : false
+    },
+    Cleric : {
+      isSelected : false,
       isFlipped : false
     }
   }
 
+
+  abilities = {
+    Warrior : "Can attack two targets at once with a small attack penalty. At level 6 and above, the attack penalty is removed. The two targets may be the same enemy.",
+    Mage : "Poison an enemy or add another stack of poison to an enemy to do up to 3 damage, with each stack of poison multiplying the damage. At level 6 and above, the damage is 1 - 6 times the number of poison stacks.",
+    Ranger : "Setup a trap to protect one of your heroes. The trap will prevent all damage and the enemy will take a turn to free itself from the trap. At level 6 and above, the trap will also deal up to 8 damage.",
+    Cleric : "Select a hero to heal for up to 3 health for each point in the intelligence skill. At level 6 and above, you can choose two targets to heal. The 2 targets can be the same hero."
+  }
 
 
   characterComplete: boolean = false;
@@ -76,13 +99,12 @@ export class CharacterCreationComponent implements OnInit {
 
   isModalOpen : boolean = false;
   delayForModal : number = 2000;
-  isItemFlipped : boolean = false;
   delay : number = 500;
   // prevRace:string = "";
   isRaceActive : boolean = true;
   isClassActive : boolean = false;
   isNameActive : boolean = false;
-  selectedClass = document.getElementsByClassName('selected-race');
+  selectedClass = document.getElementsByClassName('item-wrapper');
 
   ngOnInit(): void {
     setTimeout(()=> {
@@ -101,27 +123,19 @@ export class CharacterCreationComponent implements OnInit {
   changeRace (race: string, isSelected : boolean) {
     this.character.race = race;
 
-    if(document.getElementsByClassName('selected-race').length !== 0){
+    if(document.getElementsByClassName('selected-tab').length !== 0){
         for(let i= 0; i< this.selectedClass.length; i++){
-          this.selectedClass[i].classList.remove("selected-race");
+          this.selectedClass[i].classList.remove("selected-tab");
         }
     }
 
     
-  
-    
-    
-    if (this.stats[race].isSelected  === isSelected) {
-      this.stats[race].isSelected  = false;
+    if (this.options[race].isSelected  === isSelected) {
+      this.options[race].isSelected  = false;
     }
     else {
-      this.stats[race].isSelected  = isSelected;
+      this.options[race].isSelected  = isSelected;
     }
-
-  
-
-
-
 
 
     
@@ -129,8 +143,21 @@ export class CharacterCreationComponent implements OnInit {
     this.checkCompleted();
   };
 
-  changeClass (newClass: string) {
+  changeClass (newClass: string, isSelected : boolean) {
     this.character.class = newClass;
+
+    if(document.getElementsByClassName('selected-tab').length !== 0){
+      for(let i= 0; i< this.selectedClass.length; i++){
+        this.selectedClass[i].classList.remove("selected-tab");
+      }
+    }
+
+    if (this.options[newClass].isSelected  === isSelected) {
+      this.options[newClass].isSelected  = false;
+    }
+    else {
+      this.options[newClass].isSelected  = isSelected;
+    }
     this.checkCompleted();
   };
 
@@ -159,11 +186,11 @@ export class CharacterCreationComponent implements OnInit {
   makeFlipAnimation(race: string, flipped: boolean){
 
     if(flipped){
-      this.itemFlipped[race].isFlipped = true;
+      this.options[race].isFlipped = true;
      
     }else {
       setTimeout(()=> {
-        this.itemFlipped[race].isFlipped = false;
+        this.options[race].isFlipped = false;
         
       },100)
 
@@ -217,19 +244,19 @@ export class CharacterCreationComponent implements OnInit {
 
   }
 
-  makeReadMoreAnimate(race: string, isOnHover : boolean) {
-    let raceItem = race.toLocaleLowerCase() + "-item";
+  makeReadMoreAnimate(options: string, isOnHover : boolean) {
+    let optionsItem = options.toLocaleLowerCase() + "-item";
         if(isOnHover){
-          gsap.to("."+raceItem +" .btn--read-more i", {
+          gsap.to("."+optionsItem +" .btn--read-more i", {
             x: 5, 
             stagger: { 
               each: .2,
               from: 0,
-              ease: "power2.out"
+              ease: "elastic.out"
             }
           });
         }else {
-          gsap.to("."+raceItem +" .btn--read-more i", {
+          gsap.to("."+optionsItem +" .btn--read-more i", {
             x: 0, 
             stagger: { 
               each: .2,

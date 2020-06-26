@@ -11,14 +11,14 @@
                 @include textStyle ($headerColor, 40, 1.1, 40 , 700);
             }
         }
-        .race-container {
+        .modal-container {
             background-color: rgba(0, 0, 0, 0.5);
             &.modal-is-active {
                 display: flex !important;
                 justify-content: center  ;
                 align-items: center;
             }
-            .race-wrapper {
+            .modal-wrapper {
                 min-height: em(650);
                 height: auto;
                 background: white;
@@ -30,11 +30,12 @@
                 box-shadow: 0px 0px 8px 0px rgba(204,204,204,1);
                 padding-bottom: em(15);
             }
-            .race-character-description-wrapper {
+            .modal-character-description-wrapper {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 padding-bottom: em(25);
+                padding-top: em(25);
                 .item-wrapper {
                     cursor: pointer;
                     width: calc(25% - 1em);
@@ -43,19 +44,22 @@
                     position: relative;
                     border : 1px solid $black;
                     box-shadow: 0px 0px 4px 0px rgba(204,204,204,1);
+                    min-height: em(425);
+                    height: auto;
+                    overflow: hidden;
                     &:hover {
                         border: 1px solid $orange !important;
                         box-shadow: 0px 0px 4px 0px rgba(204,204,204,1);
                     }
-                    &.selected-race {
+                    &.selected-tab {
                         border: 1px solid $orange;
                         box-shadow: 0px 0px 4px 0px rgba(204,204,204,1);
                     }
                     .item {
                         min-height: em(375);
                         &.item-base-information-wrapper {
-                            .race-stats-wrapper {
-                                position: relative;
+                            .modal-stats-wrapper {
+                          
                                 ul {
                                     margin: 0;
                                     padding: 0;
@@ -82,11 +86,18 @@
                     
                 }
             }
-            .race-confirmation-wrapper {
+            .modal-confirmation-wrapper {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
+            }
+        }
+        .class-container {
+            .modal-stats-wrapper {
+               p{
+                font-size: em(12);
+               } 
             }
         }
         // .sidebar {

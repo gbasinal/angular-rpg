@@ -32,6 +32,7 @@ h1, h2, h3, h4 {
 p, li , i, input{
     font-family: 'Raleway', sans-serif;
     color: black;
+    margin: 0;
 }
 
 input {
@@ -103,8 +104,8 @@ input {
     }
     &--read-more {
         position: absolute;
-        right: 0;
-        bottom: 0.143em;
+        right: 0.714em;
+        bottom:0.714em;
         font-size: em(14);
 
     }
