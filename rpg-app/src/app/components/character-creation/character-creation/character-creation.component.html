@@ -3,7 +3,7 @@
         <div class="header-container">
             <h1>Your Character Information:</h1>
         </div>
-        <div class="race-container modal-race modal" [class.modal-is-active]="isModalOpen">
+        <div class="race-container modal-container modal-race modal" [class.modal-is-active]="isModalOpen" *ngIf="isRaceActive">
             <div class="race-wrapper">
                 <div class="header-wrapper">
                     <h2>Please choose your Race:</h2>
@@ -13,8 +13,52 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, reiciendis?</p>
                 </div>
                 <div class="race-character-description-wrapper">
+                    <div class="item-wrapper " *ngFor="let race of races" [class.selected-race]="stats[race].isSelected"  (click)="changeRace(race, true) " >
+                        <div class="item item-base-information-wrapper {{race.toLowerCase()}}-item" *ngIf="!itemFlipped[race].isFlipped" (mouseover)="makeReadMoreAnimate(race, true)" (mouseout)="makeReadMoreAnimate(race, false)" >
+                            <h4>{{race}}</h4>
+                            <div class="race-image-container">
+                                <img src="../../../../assets/characters/warrior-male.png" alt="">
+                            </div>
+                            <div class="race-stats-wrapper">
+                                <h5>Base Stats:</h5>
+                                <ul >
+                                    <li>Attack : {{stats[race].attack}}</li>
+                                    <li>Sneak : {{stats[race].sneak}}</li>
+                                    <li>Persuade : {{stats[race].persuade}}</li>
+                                    <li>Intelligence : {{stats[race].intelligence}}</li>
+                                </ul>
+                                <button class="btn btn--text btn--back btn--read-more" (click)="makeFlipAnimation(race , true)"> <i class="fas fa-caret-right"></i>  <i class="fas fa-caret-right"></i></button>
+                            </div>
+                        </div>
+                        <div class="item item-story-wrapper" *ngIf="itemFlipped[race].isFlipped">
+                            <h4>{{race}}</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, a! Aliquid perferendis sit exercitationem perspiciatis reiciendis maiores architecto nihil ullam.</p>
+                            <button class="btn btn--text btn--back" (click)="makeFlipAnimation(race , false)"><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="race-confirmation-wrapper">
+                    
+                    <h5>You have chosen:  {{character.race}}</h5>
+                    <div class="btn-container">
+                        <button class="btn btn--text" (click)="nextStep('class', undefined)">Next <i class="fas fa-caret-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="class-container modal-container modal-race modal"  [class.modal-is-active]="isModalOpen"  *ngIf="isClassActive">
+            <div class="race-wrapper">
+                <div class="header-wrapper">
+                    <h2>Please choose your Class:</h2>
+                </div>
+                <div class="race-intro-message-wrapper">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam rerum aspernatur quae consectetur sed at repellendus fuga, voluptatibus fugit in.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, reiciendis?</p>
+                </div>
+                <div class="race-character-description-wrapper">
                     <div class="item-wrapper " *ngFor="let race of races"  [ngClass]="stats[race].isSelected ? 'selected' : ''  " >
-                        <div class="item item-base-information-wrapper" *ngIf="!itemFlipped[race].isFlipped" (click)="changeRace(race) ; makeFlipAnimation(race , true)" >
+                        <div class="item item-base-information-wrapper" *ngIf="!itemFlipped[race].isFlipped" (click)="changeRace(race, true) ; makeFlipAnimation(race , true)" >
                             <h4>{{race}}</h4>
                             <div class="race-image-container">
                                 <img src="../../../../assets/characters/warrior-male.png" alt="">
@@ -32,14 +76,18 @@
                         <div class="item item-story-wrapper" *ngIf="itemFlipped[race].isFlipped">
                             <h4>{{race}}</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, a! Aliquid perferendis sit exercitationem perspiciatis reiciendis maiores architecto nihil ullam.</p>
-                            <button class="btn btn--text btn--back" (click)="makeFlipAnimation(race , false)"><i class="fas fa-caret-left"></i> Back</button>
+                            <button class="btn btn--text btn--back" (click)="makeFlipAnimation(race , false)"><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i></button>
                         </div>
                     </div>
                 </div>
                 <div class="race-confirmation-wrapper">
                     
                     <h5>You have chosen:  {{character.race}}</h5>
-                    <button class="btn btn--text">Next <i class="fas fa-caret-right"></i></button>
+                    <div class="btn-container">
+                        <button class="btn btn--text" (click)="nextStep(undefined, 'race')"> <i class="fas fa-caret-left"></i> Back </button>
+                        <span> - </span>
+                        <button class="btn btn--text" (click)="nextStep('name', undefined)">Next <i class="fas fa-caret-right"></i></button>
+                    </div>
                 </div>
             </div>
         </div>

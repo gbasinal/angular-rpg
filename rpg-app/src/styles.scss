@@ -101,6 +101,13 @@ input {
             outline: none !important;
         }
     }
+    &--read-more {
+        position: absolute;
+        right: 0;
+        bottom: 0.143em;
+        font-size: em(14);
+
+    }
 }
 
 .animated {

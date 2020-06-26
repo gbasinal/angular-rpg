@@ -19,7 +19,8 @@
                 align-items: center;
             }
             .race-wrapper {
-                height: em(650);
+                min-height: em(650);
+                height: auto;
                 background: white;
                 width: 80%;
                 padding: em(25);
@@ -39,13 +40,14 @@
                     width: calc(25% - 1em);
                     padding: em(15);
                     border-radius: 7px;
-                    border: 1px solid transparent;
                     position: relative;
+                    border : 1px solid $black;
+                    box-shadow: 0px 0px 4px 0px rgba(204,204,204,1);
                     &:hover {
-                        border: 1px solid $orange;
+                        border: 1px solid $orange !important;
                         box-shadow: 0px 0px 4px 0px rgba(204,204,204,1);
                     }
-                    &.selected {
+                    &.selected-race {
                         border: 1px solid $orange;
                         box-shadow: 0px 0px 4px 0px rgba(204,204,204,1);
                     }
@@ -53,6 +55,7 @@
                         min-height: em(375);
                         &.item-base-information-wrapper {
                             .race-stats-wrapper {
+                                position: relative;
                                 ul {
                                     margin: 0;
                                     padding: 0;

@@ -78,8 +78,11 @@ export class CharacterCreationComponent implements OnInit {
   delayForModal : number = 2000;
   isItemFlipped : boolean = false;
   delay : number = 500;
-  prevRace:string = "";
-
+  // prevRace:string = "";
+  isRaceActive : boolean = true;
+  isClassActive : boolean = false;
+  isNameActive : boolean = false;
+  selectedClass = document.getElementsByClassName('selected-race');
 
   ngOnInit(): void {
     setTimeout(()=> {
@@ -95,16 +98,31 @@ export class CharacterCreationComponent implements OnInit {
 
   };
 
-  changeRace (race: string) {
+  changeRace (race: string, isSelected : boolean) {
     this.character.race = race;
 
-    
-    this.prevRace = race;
-    this.stats[race].isSelected = true;
-    
-    // this.stats[this.prevRace].isSelected = false;
+    if(document.getElementsByClassName('selected-race').length !== 0){
+        for(let i= 0; i< this.selectedClass.length; i++){
+          this.selectedClass[i].classList.remove("selected-race");
+        }
+    }
 
-    // this.makeFlipAnimation(race , true);
+    
+  
+    
+    
+    if (this.stats[race].isSelected  === isSelected) {
+      this.stats[race].isSelected  = false;
+    }
+    else {
+      this.stats[race].isSelected  = isSelected;
+    }
+
+  
+
+
+
+
 
     
 
@@ -151,6 +169,77 @@ export class CharacterCreationComponent implements OnInit {
 
     }
    
+  }
+
+  nextStep(next : string , back : string) {
+    if(next !== undefined) {
+      switch (next) {
+        case "class":
+            this.isClassActive = true;
+            this.isRaceActive = false;
+            this.isNameActive = false
+            break;
+        case "name":
+          this.isClassActive = false;
+          this.isRaceActive = false;
+          this.isNameActive = true;
+            break;
+  
+        default:
+          this.isClassActive = true;
+          this.isRaceActive = false;
+          this.isNameActive = false;
+            break;
+      }
+    }
+
+    if(back !== undefined) {
+      console.log("kjhkjh");
+      switch (back) {
+        case "race":
+            this.isClassActive = false;
+            this.isRaceActive = true;
+            this.isNameActive = false
+            break;
+        case "name":
+          this.isClassActive = false;
+          this.isRaceActive = false;
+          this.isNameActive = true;
+            break;
+  
+        default:
+          this.isClassActive = true;
+          this.isRaceActive = false;
+          this.isNameActive = false;
+            break;
+      }
+    }
+
+  }
+
+  makeReadMoreAnimate(race: string, isOnHover : boolean) {
+    let raceItem = race.toLocaleLowerCase() + "-item";
+        if(isOnHover){
+          gsap.to("."+raceItem +" .btn--read-more i", {
+            x: 5, 
+            stagger: { 
+              each: .2,
+              from: 0,
+              ease: "power2.out"
+            }
+          });
+        }else {
+          gsap.to("."+raceItem +" .btn--read-more i", {
+            x: 0, 
+            stagger: { 
+              each: .2,
+              from: 0,
+              ease: "power2.in"
+            }
+          });
+        }
+
+      
   }
 
 
