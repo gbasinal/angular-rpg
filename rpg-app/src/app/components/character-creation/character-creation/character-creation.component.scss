@@ -161,6 +161,22 @@
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
+                .btn-container {
+                    width: em(30);
+                    display: flex;
+                    justify-content: space-between;
+                    button {
+                        &:hover {
+                            i {
+                                color: $headerColor;
+                            }
+                        }
+                        i {
+                            font-size: em(30);
+
+                        }
+                    }
+                }
             }
         }
         .class-container {

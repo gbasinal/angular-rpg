@@ -112,13 +112,6 @@ export class CharacterCreationComponent implements OnInit {
     },this.delayForModal)
   }
 
-  checkCompleted() {
-    this.characterComplete = this.character.race !== "--Choose--"
-      && this.character.class ! == "--Choose--"
-      && this.character.gender
-      && this.character.name
-
-  };
 
   changeRace (race: string, isSelected : boolean) {
     this.character.race = race;
@@ -137,10 +130,10 @@ export class CharacterCreationComponent implements OnInit {
       this.options[race].isSelected  = isSelected;
     }
 
-
+    
     
 
-    this.checkCompleted();
+   
   };
 
   changeClass (newClass: string, isSelected : boolean) {
@@ -158,17 +151,23 @@ export class CharacterCreationComponent implements OnInit {
     else {
       this.options[newClass].isSelected  = isSelected;
     }
-    this.checkCompleted();
+    
   };
 
   changeGender (gender: string) {
 
     this.character.gender = gender;
-    this.checkCompleted();
+    
   };
 
-  changeName (){
-    this.checkCompleted();
+  changeName (name : string){
+    
+    
+    this.character.name = name;
+    
+    if(!this.character.name){
+      this.character.name = undefined;
+    }
     this.characterComplete = true;
   };
 
@@ -199,6 +198,7 @@ export class CharacterCreationComponent implements OnInit {
   }
 
   nextStep(next : string , back : string) {
+    console.log(this.character);
     if(next !== undefined) {
       switch (next) {
         case "class":
