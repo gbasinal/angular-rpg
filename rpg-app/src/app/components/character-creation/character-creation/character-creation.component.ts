@@ -210,8 +210,12 @@ export class CharacterCreationComponent implements OnInit {
           this.isClassActive = false;
           this.isRaceActive = false;
           this.isNameActive = true;
-            break;
-  
+          break;
+        case "close":
+          this.isClassActive = false;
+          this.isRaceActive = false;
+          this.isNameActive = false; 
+          break;
         default:
           this.isClassActive = true;
           this.isRaceActive = false;

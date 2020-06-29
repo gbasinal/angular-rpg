@@ -3,7 +3,7 @@
         <div class="header-container">
             <h1>Your Character Information:</h1>
         </div>
-        <div class="race-container modal-container modal-race modal" [class.modal-is-active]="isModalOpen" *ngIf="!isRaceActive">
+        <div class="race-container modal-container modal-race modal" [class.modal-is-active]="isModalOpen" *ngIf="isRaceActive">
             <div class="modal-wrapper">
                 <div class="header-wrapper">
                     <h2>Please choose your Race:</h2>
@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <div class="class-container modal-container modal-class modal"  [class.modal-is-active]="isModalOpen"  *ngIf="!isClassActive">
+        <div class="class-container modal-container modal-class modal"  [class.modal-is-active]="isModalOpen"  *ngIf="isClassActive">
             <div class="modal-wrapper">
                 <div class="header-wrapper">
                     <h2>Please choose your Class:</h2>
@@ -88,7 +88,7 @@
             </div>
         </div>
 
-        <div class="class-container modal-container modal-class modal"  [class.modal-is-active]="isModalOpen"  *ngIf="!isNameActive">
+        <div class="class-container modal-container modal-class modal"  [class.modal-is-active]="isModalOpen"  *ngIf="isNameActive">
             <div class="modal-wrapper">
                 <div class="header-wrapper">
                     <h2>Character Details:</h2>
@@ -98,32 +98,37 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, reiciendis?</p>
                 </div>
                 <div class="modal-character-description-wrapper">
-                    <div class="item-wrapper " [class.selected-tab]="options[class].isSelected" *ngFor="let class of classes" (click)="changeClass(class, true) " >
-                        <div class="item item-base-information-wrapper {{class.toLowerCase()}}-item" *ngIf="!options[class].isFlipped" (mouseover)="makeReadMoreAnimate(class, true)" (mouseout)="makeReadMoreAnimate(class, false)" >
-                            <h4>{{class}}</h4>
-                            <div class="modal-image-container">
-                                <img src="../../../../assets/characters/warrior-male.png" alt="">
+                    <div class="hero-details-wrapper">
+                        <div class="hero-name-wrapper">
+                            <div class="input-label-wrapper">
+                                <label for="hero-input-field">What is your Adventurer's Name?</label>
                             </div>
-                            <div class="modal-stats-wrapper">
-                                <h5>Special Ability:</h5>
-                                <p>{{abilities[class]}}</p>
-                                <button class="btn btn--text btn--back btn--read-more" (click)="makeFlipAnimation(class , true)"> <i class="fas fa-caret-right"></i>  <i class="fas fa-caret-right"></i></button>
+                            <div class="input-field-wrapper ">
+                                <input type="text" name="hero-input-field" [(ngModel)]="character.name" (input)="changeName()">
                             </div>
                         </div>
-                        <div class="item item-story-wrapper" *ngIf="options[class].isFlipped">
-                            <h4>{{class}}</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, a! Aliquid perferendis sit exercitationem perspiciatis reiciendis maiores architecto nihil ullam.</p>
-                            <button class="btn btn--text btn--back" (click)="makeFlipAnimation(class , false)"><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i></button>
+                        <div class="hero-gender-wrapper">
+                            <p>Please choose your gender.</p>
+                            <div class="gender-container">
+                                
+                                <div class="gender-wrapper gender-male-wrapper" [class.active]="character.gender === 'Male'" (click)="changeGender('Male')">
+                                    <img src="../../../../assets/characters/warrior-male.png" alt="">
+                                    <h5>Male</h5>
+                                </div>
+                                
+                                <div class="gender-wrapper gender-female-wrapper" [class.active]="character.gender === 'Female'" (click)="changeGender('Female')">
+                                    <img src="../../../../assets/characters/warrior-male.png" alt="" >
+                                    <h5>Female</h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-confirmation-wrapper">
-                    
-                    <h5>You have chosen:  {{character.class}}</h5>
+                <div class="modal-confirmation-wrapper justify-content-end">
                     <div class="btn-container">
-                        <button class="btn btn--text" (click)="nextStep(undefined, 'race')"> <i class="fas fa-caret-left"></i> Back </button>
+                        <button class="btn btn--text" (click)="nextStep(undefined, 'class')"> <i class="fas fa-caret-left"></i> Back </button>
                         <span> - </span>
-                        <button class="btn btn--text" (click)="nextStep('name', undefined)">Next <i class="fas fa-caret-right"></i></button>
+                        <button class="btn btn--text" (click)="nextStep('close', undefined)">Continue <i class="fas fa-caret-right"></i></button>
                     </div>
                 </div>
             </div>
