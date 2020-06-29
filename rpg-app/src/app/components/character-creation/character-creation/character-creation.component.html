@@ -136,7 +136,37 @@
             </div> 
         </div>
 
-        
+        <div class="character-view-container">
+            <div class="character-view-wrapper">
+                <div class="character-image-container">
+                    <div class="character-image-wrapper">
+                        <img src="../../../../assets/characters/warrior-male.png" alt="">
+                        
+                    </div>
+                </div>
+                <div class="character-details-container">
+                    <div class="character-details-wrapper">
+                        <div class="details-wrapper name-wrapper">
+                            <h5>Name : {{character.name}}</h5>
+                        </div>
+                        <div class="details-wrapper race-wrapper">
+                            <h5>Race : {{character.race}}</h5>
+                        </div>
+                        <div class="details-wrapper class-wrapper">
+                            <h5>Class : {{character.class}}</h5>
+                        </div>
+                        <div class="details-wrapper gender-wrapper">
+                            <h5>Gender : {{character.gender}}</h5>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <button class="btn btn--orange-fill" *ngIf="!isModalOpen" (click)="openCreateCharacterModal()">Create Character</button>
+                        <button class="btn btn--orange-fill" *ngIf="isModalOpen" (click)="createCharacter()">Confirm Creation</button>
+                        <button class="btn btn--transparent" disabled [attr.disabled] = "(character.class && character.race && character.gender && character.name) === undefined ? 'disabled' : null"   (click)="editCharacterDetails()">Edit Character</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

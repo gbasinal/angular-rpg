@@ -26,6 +26,19 @@ export class Weapon {
 }
 
 
+export class SpriteUrl {
+    constructor(gender : GenderOptions, race : RaceOptions , role: ClassOptions){
+        this.gender = gender;
+        this.race = race;
+        this.role = role;
+
+    }
+    gender : GenderOptions;
+    race : RaceOptions;
+    role : ClassOptions ;
+}
+
+
 export enum CharacterSkills {
     attack = "attack",
     sneak = "sneak",
@@ -198,7 +211,43 @@ export class Warrior  extends Hero {
         this.skills.persuade++;
         this.skills.sneak--;
         this.skills.intelligence--;
-        this.spriteUrl = this.gender === GenderOptions.male ? "./assets/characters/warrior-male.png" : "./assets/characters/warrior-male.png" ;
+        // this.spriteUrl = this.gender === GenderOptions.male ? "./assets/characters/warrior-male.png" : "./assets/characters/warrior-male.png" ;
+        switch (gender) {
+            case GenderOptions.male:
+                switch (race){
+                    case RaceOptions.human:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;
+                    case RaceOptions.elf:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;
+                    case RaceOptions.dwarf:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;
+                    case RaceOptions.beast:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;                                                                        
+                }
+                break;
+                case GenderOptions.female:
+                    switch (race){
+                        case RaceOptions.human:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;
+                        case RaceOptions.elf:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;
+                        case RaceOptions.dwarf:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;
+                        case RaceOptions.beast:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;                                                                        
+                    }
+                    break;                
+            default:
+                break;
+        }
 
     }
     levelUp():void{
@@ -218,7 +267,43 @@ export class Ranger  extends Hero {
         this.skills.persuade--;
         this.skills.sneak +=2;
         this.skills.intelligence++;
-        this.spriteUrl = this.gender === GenderOptions.male ? "./assets/characters/warrior-male.png" : "./assets/characters/warrior-male.png" ;
+        // this.spriteUrl = this.gender === GenderOptions.male ? "./assets/characters/warrior-male.png" : "./assets/characters/warrior-male.png" ;
+        switch (gender) {
+            case GenderOptions.male:
+                switch (race){
+                    case RaceOptions.human:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;
+                    case RaceOptions.elf:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;
+                    case RaceOptions.dwarf:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;
+                    case RaceOptions.beast:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;                                                                        
+                }
+                break;
+                case GenderOptions.female:
+                    switch (race){
+                        case RaceOptions.human:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;
+                        case RaceOptions.elf:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;
+                        case RaceOptions.dwarf:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;
+                        case RaceOptions.beast:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;                                                                        
+                    }
+                    break;                
+            default:
+                break;
+        }        
 
     }
     levelUp():void{
@@ -238,7 +323,43 @@ export class Mage  extends Hero {
         this.skills.persuade++;
         this.skills.sneak--;
         this.skills.intelligence+=3;
-        this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/characters/warrior-male.png" ;
+        // this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/characters/warrior-male.png" ;
+        switch (gender) {
+            case GenderOptions.male:
+                switch (race){
+                    case RaceOptions.human:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;
+                    case RaceOptions.elf:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;
+                    case RaceOptions.dwarf:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;
+                    case RaceOptions.beast:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;                                                                        
+                }
+                break;
+                case GenderOptions.female:
+                    switch (race){
+                        case RaceOptions.human:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;
+                        case RaceOptions.elf:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;
+                        case RaceOptions.dwarf:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;
+                        case RaceOptions.beast:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;                                                                        
+                    }
+                    break;                
+            default:
+                break;
+        }        
 
     }
     levelUp():void{
@@ -258,7 +379,43 @@ export class Cleric  extends Hero {
         this.skills.persuade +=2;
         this.skills.sneak--;
         this.skills.intelligence--;
-        this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/characters/warrior-male.png" ;
+        // this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/characters/warrior-male.png" ;
+        switch (gender) {
+            case GenderOptions.male:
+                switch (race){
+                    case RaceOptions.human:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;
+                    case RaceOptions.elf:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;
+                    case RaceOptions.dwarf:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;
+                    case RaceOptions.beast:
+                        this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                        break;                                                                        
+                }
+                break;
+                case GenderOptions.female:
+                    switch (race){
+                        case RaceOptions.human:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;
+                        case RaceOptions.elf:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;
+                        case RaceOptions.dwarf:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;
+                        case RaceOptions.beast:
+                            this.spriteUrl =  "./assets/characters/warrior-male.png" ;
+                            break;                                                                        
+                    }
+                    break;                
+            default:
+                break;
+        }        
 
     }
     levelUp():void{

@@ -24,7 +24,7 @@ body {
     padding : em(10) em(25);
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
     font-family: 'Poppins', sans-serif;
     color: black;
 }
@@ -52,6 +52,10 @@ input {
     letter-spacing: 1.2px;
     font-family: 'Raleway', sans-serif;
     transition: all .4s;
+    &:focus, &:active {
+        outline: none !important;
+        box-shadow: none;
+    }
     &--orange-fill {
         background-color: $orange;
         color: $grey;
@@ -108,6 +112,15 @@ input {
         bottom:0.714em;
         font-size: em(14);
 
+    }
+
+    &--transparent {
+        background-color: transparent;
+        border: 1px solid transparent;
+        color: $orange;
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
 

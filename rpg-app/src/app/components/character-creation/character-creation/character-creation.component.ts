@@ -82,6 +82,17 @@ export class CharacterCreationComponent implements OnInit {
     }
   }
 
+  spriteUrl = {
+    Human : {
+      Male : {
+        Warrior : "",
+        Mage : "",
+        Elf : "",
+        Ranger : "",
+      }
+    }
+  }
+
 
   abilities = {
     Warrior : "Can attack two targets at once with a small attack penalty. At level 6 and above, the attack penalty is removed. The two targets may be the same enemy.",
@@ -107,9 +118,7 @@ export class CharacterCreationComponent implements OnInit {
   selectedClass = document.getElementsByClassName('item-wrapper');
 
   ngOnInit(): void {
-    setTimeout(()=> {
-      this.isModalOpen = true;
-    },this.delayForModal)
+
   }
 
 
@@ -155,6 +164,7 @@ export class CharacterCreationComponent implements OnInit {
   };
 
   changeGender (gender: string) {
+
 
     this.character.gender = gender;
     
@@ -225,7 +235,7 @@ export class CharacterCreationComponent implements OnInit {
     }
 
     if(back !== undefined) {
-      console.log("kjhkjh");
+      
       switch (back) {
         case "race":
             this.isClassActive = false;
@@ -269,9 +279,14 @@ export class CharacterCreationComponent implements OnInit {
             }
           });
         }
-
-      
   }
 
+  editCharacterDetails(): void {
+    this.isRaceActive = true;
+  }
+
+  openCreateCharacterModal(): void {
+    this.isModalOpen = true;
+  }
 
 }

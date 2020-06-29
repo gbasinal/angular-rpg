@@ -3,6 +3,11 @@
 
 .character-creation-container {
     padding-top: em(50);
+    height: 100vh;
+    background-image: url("../../../../assets/backgrounds/home-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     .character-creation-wrapper {
         .header-container {
             padding-bottom: em(100);
@@ -96,10 +101,11 @@
                         }
                         .input-field-wrapper {
                             padding-left: em(50);
+                            width: em(560);
                             input {
                                 border : 0;
                                 border-bottom: 1px solid $orange;
-
+                                width: 100%;
                             }
                         }
                     }
@@ -126,7 +132,7 @@
                                 &:hover {
                                     border: 1px solid $orange !important;
                                     box-shadow: 0px 0px 4px 0px rgba(204,204,204,1);
-                                    transform: scale(1.01);
+                                    
                                 }
                                 &:last-child{
                                     margin-right: 0;    
@@ -148,7 +154,6 @@
                                     box-shadow: 0px 0px 4px 0px rgba(204,204,204,1);
                                     h5 {
                                         color: $orange;
-                                        font-weight: bold;
                                     }
                                 }
                             }
@@ -184,6 +189,71 @@
                p{
                 font-size: em(12);
                } 
+            }
+        } 
+
+        .character-view-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items : center;
+            .character-view-wrapper {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                width: em(700);
+                min-height: em(500);
+                height: auto;
+                border-radius: 7px;
+                box-shadow: 0px 0px 8px 0px #797979;
+                background-color: rgba(175,89,23, .45);
+                .character-image-container{
+                    padding: em(20) ;
+                    .character-image-wrapper {
+                        
+                        margin-right: em(20);
+                        width: em(350);
+                        height: em(500);
+                        border-radius: 7px;
+                        img {
+                            object-fit: cover;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                }
+                .character-details-container {
+                    padding-right : em(20);
+                    .character-details-wrapper{
+                        .details-wrapper {
+                            display: flex;
+                            margin-bottom: em(25);
+                            align-items: center;
+                            justify-content: space-between;
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                            h5 {
+                                margin-bottom: 0;
+                                font-family: 'Raleway', sans-serif;
+                                color: white;
+                            }
+                            p{
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                    .btn-container {
+                        margin-top: em(25);
+                        button {
+                            color: white;
+                        }
+                        .btn--orange-fill {
+                            border : 1px solid $orange;
+                        }
+                    }
+                }
             }
         }
         // .sidebar {
