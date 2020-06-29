@@ -262,7 +262,7 @@ export class Ranger  extends Hero {
     constructor(name, gender, race, level, health, skills, weapon, armor){
         super(name, gender, race, level, health, skills, weapon, armor);
         
-        this.characterRole = ClassOptions.warrior;
+        this.characterRole = ClassOptions.ranger;
         this.skills.attack--;
         this.skills.persuade--;
         this.skills.sneak +=2;
@@ -318,9 +318,9 @@ export class Mage  extends Hero {
     constructor(name, gender, race, level, health, skills, weapon, armor){
         super(name, gender, race, level, health, skills, weapon, armor);
         
-        this.characterRole = ClassOptions.warrior;
+        this.characterRole = ClassOptions.mage;
         this.skills.attack--;
-        this.skills.persuade++;
+        this.skills.persuade+=1;
         this.skills.sneak--;
         this.skills.intelligence+=3;
         // this.spriteUrl = this.gender === GenderOptions.male ? "./assets/" : "./assets/characters/warrior-male.png" ;
@@ -374,7 +374,7 @@ export class Cleric  extends Hero {
     constructor(name, gender, race, level, health, skills, weapon, armor){
         super(name, gender, race, level, health, skills, weapon, armor);
         
-        this.characterRole = ClassOptions.warrior;
+        this.characterRole = ClassOptions.cleric;
         this.skills.attack ++;
         this.skills.persuade +=2;
         this.skills.sneak--;
@@ -437,7 +437,7 @@ export const checkRace = (hero: Hero) => {
             hero.skills.attack+=2;
             break;
         case RaceOptions.elf:
-            hero.skills.persuade++;
+            hero.skills.persuade+=1;
             hero.skills.intelligence +=2;
             hero.skills.sneak+=3;
             hero.skills.attack--;
