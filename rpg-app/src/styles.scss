@@ -21,17 +21,18 @@ body {
 }
 
 .section {
-    // padding : em(10) em(15);
+    padding : em(10) em(25);
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
     font-family: 'Poppins', sans-serif;
     color: black;
 }
 
-p, li , i, input{
+p, li , i, input, label{
     font-family: 'Raleway', sans-serif;
     color: black;
+    margin: 0;
 }
 
 input {
@@ -51,6 +52,10 @@ input {
     letter-spacing: 1.2px;
     font-family: 'Raleway', sans-serif;
     transition: all .4s;
+    &:focus, &:active {
+        outline: none !important;
+        box-shadow: none;
+    }
     &--orange-fill {
         background-color: $orange;
         color: $grey;
@@ -81,6 +86,40 @@ input {
             color: white;
             border-color: transparent;
             
+        }
+    }
+    &--text {
+        background-color: transparent;
+        padding: 0;
+        color: $orange;
+        border: 0;
+
+        border-radius: 0;
+        outline: none;
+        i {
+            color: $orange;
+        }
+        &:hover {
+            color: $orange;
+        }
+        &:focus {
+            outline: none !important;
+        }
+    }
+    &--read-more {
+        position: absolute;
+        right: 0.714em;
+        bottom:0.714em;
+        font-size: em(14);
+
+    }
+
+    &--transparent {
+        background-color: transparent;
+        border: 1px solid transparent;
+        color: $orange;
+        &:hover {
+            text-decoration: underline;
         }
     }
 }
