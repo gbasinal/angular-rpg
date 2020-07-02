@@ -2,12 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import {CharacterOptions} from '../../../models/character-options';
 import { GameControllerService } from "../../../services/game-controller.service";
 import { checkRace, Hero } from 'src/app/models/character';
+
 declare let gsap :any;
 
 @Component({
   selector: 'app-character-creation',
   templateUrl: './character-creation.component.html',
-  styleUrls: ['./character-creation.component.scss']
+  styleUrls: ['./character-creation.component.scss'],
+  
+  host: {
+    '(window:resize)': 'onResize($event)'
+  }
 })
 export class CharacterCreationComponent implements OnInit {
 
@@ -116,9 +121,29 @@ export class CharacterCreationComponent implements OnInit {
   isClassActive : boolean = false;
   isNameActive : boolean = false;
   selectedClass = document.getElementsByClassName('item-wrapper');
+  isMobile : boolean = false;
+  windowWidth : number ;
+
 
   ngOnInit(): void {
+    this.windowWidth = window.innerWidth || document.documentElement.clientWidth || 
+    document.body.clientWidth;
+    if(this.windowWidth <= 1024) {
+      this.isMobile = true;
+    }
+  }
 
+  onResize(event){
+    this.windowWidth = window.innerWidth || document.documentElement.clientWidth || 
+    document.body.clientWidth;
+   
+    if(this.windowWidth <= 1024) {
+      this.isMobile = true;
+      console.log("true")
+    }else {
+      console.log("false")
+      this.isMobile = false;
+    }
   }
 
 
@@ -287,6 +312,65 @@ export class CharacterCreationComponent implements OnInit {
 
   openCreateCharacterModal(): void {
     this.isModalOpen = true;
+  }
+  defaultLeftVal : number = 0;
+  defaultRightVal : number = 0 ;
+  defaultVal : number = 0;
+  moveSlider(direction: string) {
+    let item = this.selectedClass;
+    let itemWidthToRight = this.selectedClass[0].clientWidth;
+    let itemWidthToLeft = this.selectedClass[0].clientWidth;
+    let itemW = this.selectedClass[0].clientWidth;
+
+    // itemW += this.defaultRightVal;
+    
+
+
+    if(direction === "right") {
+
+
+      
+      // this.defaultRightVal = itemWidthToRight - this.defaultLeftVal;
+      if(this.defaultRightVal !== 0){
+        console.log("right if");
+        console.log(this.defaultRightVal)
+
+
+        for(let i = 0 ; i < item.length ; i++){
+          gsap.to(item[i], .3, {x: -this.defaultRightVal, ease: "power2.easeIn"})
+        }
+        
+      }else {
+        console.log("right else")
+        this.defaultRightVal = itemWidthToRight + this.defaultLeftVal;
+        for(let i = 0 ; i < item.length ; i++){
+          gsap.to(item[i], .3, {x: -this.defaultRightVal, ease: "power2.easeIn"})
+        }
+        this.defaultRightVal = itemW;
+      }
+
+      this.defaultLeftVal = 0;
+
+      
+    }else {
+     
+      console.log(this.defaultLeftVal)
+      
+      if(this.defaultLeftVal !== 0){
+        
+        for(let i = 0 ; i < item.length ; i++){
+          gsap.to(item[i], .3, {x: this.defaultLeftVal, ease: "power2.easeOut"})
+        }
+      }else {
+        this.defaultLeftVal = itemWidthToLeft - itemWidthToLeft;
+        for(let i = 0 ; i < item.length ; i++){
+          gsap.to(item[i], .3, {x: -this.defaultLeftVal, ease: "power2.easeOut"})
+        }
+        this.defaultLeftVal = itemW;
+      }
+
+      this.defaultRightVal = 0;
+    }
   }
 
 }
