@@ -117,13 +117,15 @@ export class CharacterCreationComponent implements OnInit {
   delayForModal : number = 2000;
   delay : number = 500;
   // prevRace:string = "";
-  isRaceActive : boolean = true;
+  isRaceActive : boolean = false;
   isClassActive : boolean = false;
   isNameActive : boolean = false;
   selectedClass = document.getElementsByClassName('item-wrapper');
   isMobile : boolean = false;
   windowWidth : number ;
-
+  defaultLeftVal : number = 0;
+  defaultRightVal : number = 0 ;
+  defaultVal : number = 0;
 
   ngOnInit(): void {
     this.windowWidth = window.innerWidth || document.documentElement.clientWidth || 
@@ -312,10 +314,9 @@ export class CharacterCreationComponent implements OnInit {
 
   openCreateCharacterModal(): void {
     this.isModalOpen = true;
+    this.isRaceActive = true;
   }
-  defaultLeftVal : number = 0;
-  defaultRightVal : number = 0 ;
-  defaultVal : number = 0;
+
   moveSlider(direction: string) {
     let item = this.selectedClass;
     let itemWidthToRight = this.selectedClass[0].clientWidth;
