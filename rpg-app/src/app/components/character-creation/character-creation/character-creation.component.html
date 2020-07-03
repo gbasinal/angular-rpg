@@ -14,7 +14,10 @@
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, reiciendis?</p>
                     </div>
                     <div class="modal-character-description-wrapper">
-                        <div class="item-wrapper " *ngFor="let race of races" [class.selected-tab]="options[race].isSelected"  (click)="changeRace(race, true) " >
+                        <div class="btn-prev-container slider-control-btn" *ngIf="isMobile">
+                            <button class="btn btn--text slider-prev" (click)="moveSlider('left')"><i class="fas fa-caret-left"></i></button>
+                        </div>
+                        <div class="item-wrapper " *ngFor="let race of races; let i = index" [class.selected-tab]="options[race].isSelected"  (click)="changeRace(race, true) " id="{{'race-'+ i}}">
                             <div class="item item-base-information-wrapper {{race.toLowerCase()}}-item" *ngIf="!options[race].isFlipped" (mouseover)="makeReadMoreAnimate(race, true)" (mouseout)="makeReadMoreAnimate(race, false)" >
                                 <h4>{{race}}</h4>
                                 <div class="modal-image-container">
@@ -37,6 +40,9 @@
                                 <button class="btn btn--text btn--back"  (click)="makeFlipAnimation(race , false)"><i class="fas fa-caret-left"></i><i class="fas fa-caret-left"></i></button>
                                 
                             </div>
+                        </div>
+                        <div class="btn-next-container slider-control-btn" *ngIf="isMobile">
+                            <button class="btn btn--text slider-next" (click)="moveSlider('right')"><i class="fas fa-caret-right"></i></button>
                         </div>
                     </div>
                     <div class="modal-confirmation-wrapper">
@@ -160,9 +166,9 @@
                         </div>
                     </div>
                     <div class="btn-container">
+                        <button class="btn btn--transparent" disabled [attr.disabled] = "(character.class && character.race && character.gender && character.name) === undefined ? 'disabled' : null"   (click)="editCharacterDetails()">Edit Character</button>
                         <button class="btn btn--orange-fill" *ngIf="!isModalOpen" (click)="openCreateCharacterModal()">Create Character</button>
                         <button class="btn btn--orange-fill" *ngIf="isModalOpen" (click)="createCharacter()">Confirm Creation</button>
-                        <button class="btn btn--transparent" disabled [attr.disabled] = "(character.class && character.race && character.gender && character.name) === undefined ? 'disabled' : null"   (click)="editCharacterDetails()">Edit Character</button>
                     </div>
                 </div>
             </div>
