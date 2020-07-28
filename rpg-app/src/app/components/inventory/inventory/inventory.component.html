@@ -1,7 +1,9 @@
 <section class="inventory-component-container">
     <div class="inventory-component-wrapper">
         <div class="inventory-btn-container">
-            <button class="btn open-inventory" (click)="openInventory()">Inventory</button>
+            <button class="btn open-inventory" (click)="openInventory()"><i class="fas fa-user-plus"></i></button>
+            <button class="btn open-inventory" (click)="openInventory()"><i class="fas fa-users"></i></button>
+            <button class="btn open-inventory" (click)="openInventory()"><i class="fas fa-archive"></i></button>
         </div>
         <div *ngIf="inventoryIsOpen" class="main-inventory-container">
             <div class="dark-overlay" (click)="closeInventory()"></div>

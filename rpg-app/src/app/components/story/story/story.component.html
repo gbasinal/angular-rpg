@@ -8,23 +8,29 @@
         <div class="story-container">
             <div class="story-wrapper">
                 <div class="content-wrapper">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque fugiat quis at ex repudiandae ipsa nulla magni inventore saepe. Delectus.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, tempore!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis in iusto nihil molestiae dolor hic eveniet nisi voluptatem a qui!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam modi possimus magnam officiis minus asperiores voluptates blanditiis in. Velit delectus sed voluptatum ipsam autem quisquam.</p>
+                    <p *ngFor="let paragraph of currentChapter.story">
+                        {{paragraph}}
+                    </p>
                 </div>
                 <div class="choice-container">
                     <div class="choice-wrapper">
-                        <button *ngFor="let option of currentChapter.options" class="btn btn--orange-border" (click)="chooseAction(option)">
+                        <button *ngFor="let option of currentChapter.options" class="btn btn--transparent" (click)="chooseAction(option)">
                             {{option}}
                         </button>
                     </div>
                 </div>
                 <div class="divider">&nbsp;</div>
-                <div class="display-message-container">
-                    <div class="display-message-wrapper">
-                        <h3>Display Message</h3>
-                        <p>You decided to Attack</p>
+                <div class="display-container">
+                    <div class="display-message-container">
+                        <div class="display-message-wrapper">
+                            <h3>Display Message</h3>
+                            <p>{{displayMessage}}</p>
+                        </div>
+                    </div>
+                    <div class="personal-settings-container">
+                        <div class="personal-settings-wwrapper">
+                            <inventory-component></inventory-component>
+                        </div>
                     </div>
                 </div>
             </div>
